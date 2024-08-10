@@ -1,0 +1,80 @@
+{
+ "actions": [],
+ "autoname": "field:type",
+ "creation": "2022-10-22 22:47:55.450665",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "order_type",
+  "type",
+  "days",
+  "territory"
+ ],
+ "fields": [
+  {
+   "fieldname": "order_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Order Type",
+   "options": "\nInternal\nExternal",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.order_type == \"Internal\";",
+   "fieldname": "days",
+   "fieldtype": "Int",
+   "label": "Days"
+  },
+  {
+   "depends_on": "eval:doc.order_type == \"External\";",
+   "fieldname": "territory",
+   "fieldtype": "Table",
+   "label": "Territory",
+   "options": "Maintenance Schedule Territory"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Type",
+   "unique": 1
+  }
+ ],
+ "links": [],
+ "modified": "2022-10-25 18:36:30.964745",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Schedule List",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

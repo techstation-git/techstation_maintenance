@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:maintenance_department",
+ "creation": "2020-03-04 19:30:03.551171",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "maintenance_department",
+  "branches_section",
+  "table_3",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "maintenance_department",
+   "fieldtype": "Data",
+   "label": "Maintenance Department",
+   "unique": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "branches_section",
+   "fieldtype": "Section Break",
+   "label": "Branches"
+  },
+  {
+   "fieldname": "table_3",
+   "fieldtype": "Table",
+   "options": "Maintenance Department Branch"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Maintenance Department",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-10-25 18:38:28.988389",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Department",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

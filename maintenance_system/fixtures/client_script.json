@@ -1,0 +1,57 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Sales Invoice",
+  "enabled": 1,
+  "modified": "2023-09-08 12:48:14.615457",
+  "module": null,
+  "name": "Sales Invoice-Form",
+  "script": "frappe.ui.form.on('Sales Invoice', {\n\trefresh(frm) {\n\t    if(frm.doc.warranty_created == 0 && frm.doc.docstatus == 1){\n    \t    $.each(frm.doc.items, function(index, row){\n        \t    frappe.model.with_doc(\"Item\", row.item_code, function() {\n                    var item= frappe.model.get_doc(\"Item\", row.item_code)\n                    if(item.warranty_status == \"Enabled\"){\n                            frm.add_custom_button(__(\"Create Maintenance Item\"), function(){\n                            frappe.call({\n                                method: 'maintenance_system.customization.sales_invoice.create_maintenance_item',\n                                    args: {\n                                        'invoice':frm.doc.name,\n                                    },\n                                    callback: function(r) {\n                                        if (!r.exc) {\n                                            frappe.msgprint(r.message);\n                                            frm.reload()\n                                        }\n                                    }\n                                });\n                            }, __(\"Create\"));\n                            return false;\n                    }\n                });\n            });\n\t    }\n\t},\n\tvalidate: function(frm){\n\t    if (frm.doc.docstatus == 0){\n\t        frm.set_value(\"warranty_created\", 0);\n\t    }\n\t    \n\t}\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Maintenance Schedule List",
+  "enabled": 1,
+  "modified": "2022-09-13 19:38:47.849400",
+  "module": null,
+  "name": "Maintenance Schedule List-Form",
+  "script": "frappe.ui.form.on('Maintenance Schedule List', {\n\tbefore_save(frm) {\n\t\tfrm.set_value(\"type\",frm.doc.order_type);\n\t}\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Warranty Template",
+  "enabled": 0,
+  "modified": "2023-09-13 16:51:02.576707",
+  "module": null,
+  "name": "Warranty Template-Form",
+  "script": "frappe.ui.form.on('Warranty Template', {\r\n\twarranty_period_type(frm) {\r\n\t\tif (frm.doc.warranty_period_type === \"\") {\r\n\t\t\tfrm.set_value(\"warranty_period\", \"\");\r\n\t\t}\r\n\t},\r\n\trefresh(frm) {\r\n\t\tfrm.set_df_property(\"warranty_period_type\", \"reqd\", true);\r\n\t\tif (frm.doc.warranty_type == 'Partial Warranty') {\r\n\t\t    frm.fields_dict.warranty_bearing_rate.grid.update_docfield_property(\"full_warranty\", \"read_only\", 1);\r\n\t\t}\r\n\t\telse{\r\n\t\t    frm.fields_dict.warranty_bearing_rate.grid.update_docfield_property(\"full_warranty\", \"read_only\", 0);\r\n\t\t}\r\n\t\t//refresh_field(\"warranty_bearing_rate\");\r\n\t},\r\n\twarranty_period(frm) {\r\n\t\tif (frm.doc.warranty_type) {\r\n\t\t\tfrm.set_value(\"warranty_bearing_rate\", \"\")\r\n\t\t\trefresh_field(\"warranty_bearing_rate\");\r\n\t\t\tfrm.trigger('warranty_type')\r\n\t\t\tif (frm.doc.warranty_period_type == \"Days\") {\r\n\t\t\t\tfor (let i = 0; i < 1; i++) {\r\n\t\t\t\t\tfrappe.model.add_child(cur_frm.doc, \"Warranty Template\", \"warranty_bearing_rate\");\r\n\t\t\t\t\trefresh_field(\"warranty_bearing_rate\");\r\n\t\t\t\t}\r\n\t\t\t\t\r\n\r\n\t\t\t} else {\r\n\t\t\t\tfor (let i = 0; i < frm.doc.warranty_period; i++) {\r\n\t\t\t\t\tfrappe.model.add_child(cur_frm.doc, \"Warranty Template\", \"warranty_bearing_rate\");\r\n\t\t\t\t\trefresh_field(\"warranty_bearing_rate\");\r\n\t\t\t\t}\r\n\t\t\t\tfrm.refresh_fields();\r\n\t\t\t\t\r\n\t\t\t}\r\n\r\n\t\t} else {\r\n// \t\t\tfrm.doc.warranty_period = 0\r\n\t\t\tfrm.set_value(\"warranty_period\", \"\")\r\n\t\t\tfrm.set_value(\"warranty_bearing_rate\", \"\")\r\n\r\n\t\t\tfrappe.msgprint(\"Please Select Warranty Period Type\")\r\n\t\t}\r\n\t\t\r\n// \t\tcur_frm.save()\r\n\t},\r\n\twarranty_type(frm) {\r\n\t    if (frm.doc.warranty_type == 'Partial Warranty') {\r\n\t\t    frm.fields_dict.warranty_bearing_rate.grid.update_docfield_property(\"full_warranty\", \"read_only\", 1);\r\n\t\t}\r\n\t\telse{\r\n\t\t    frm.fields_dict.warranty_bearing_rate.grid.update_docfield_property(\"full_warranty\", \"read_only\", 0);\r\n\t\t}\r\n\t\tvar options = [\"\", \"Item\", \"Service\"]\r\n\t\tif (frm.doc.warranty_type == 'Full Warranty') {\r\n\t\t\toptions.push(\"Full Warranty\")\r\n\t\t}\r\n\t\tvar df = frappe.meta.get_docfield(\"Warranty Bearing Rate\", \"partial_warranty\", frm.doc.name);\r\n\r\n\t\tdf.options = options;\r\n\r\n\t\tfrm.refresh_fields();\r\n\t},\r\n\tvalidate(frm) {\r\n\t\tif (frm.doc.warranty_bearing_rate > 0) {\r\n\t\t\tif (frm.doc.warranty_period_type != \"Days\") {\r\n\t\t\t\tif (frm.doc.warranty_bearing_rate.length != frm.doc.warranty_period) {\r\n\t\t\t\t\tfrappe.throw(\"Warranty Bearing Rate Should not greater than Warranty Period\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\r\n\t\t}\r\n\t}\r\n});\r\n\r\nlet check_data = (frm) => {\r\n\tlet filter_accounts = frm.doc.warranty_bearing_rate.filter(item => {\r\n\t\treturn item;\r\n\t});\r\n\tfrm.doc.warranty_bearing_rate = [];\r\n\tfilter_accounts.map(item => frm.add_child('warranty_bearing_rate', item));\r\n\treturn filter_accounts.length;\r\n};\r\n\r\nfrappe.ui.form.on(\"Warranty Bearing Rate\",{\r\n    full_warranty: function(frm, cdt, cdn){\r\n        var doc = locals[cdt][cdn]\r\n        console.log(\"-------------------------\")\r\n        frappe.model.set_value(cdt, cdn, 'item', 0);\r\n        frappe.model.set_value(cdt, cdn, 'services', 0);\r\n    },\r\n    item: function(frm, cdt, cdn){\r\n        var doc = locals[cdt][cdn]\r\n        \r\n        frappe.model.set_value(cdt, cdn, 'full_warranty', 0);\r\n        frappe.model.set_value(cdt, cdn, 'services', 0);\r\n    },\r\n    services: function(frm, cdt, cdn){\r\n        var doc = locals[cdt][cdn]\r\n        \r\n        frappe.model.set_value(cdt, cdn, 'item', 0);\r\n        frappe.model.set_value(cdt, cdn, 'full_warranty', 0);\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Maintenance Team",
+  "enabled": 1,
+  "modified": "2022-11-01 17:38:01.970853",
+  "module": null,
+  "name": "Maintenance Team-Form",
+  "script": "frappe.ui.form.on('Maintenance Team', {\n// \trefresh(frm) {\n// \t    frm.set_value(\"user\",frappe.session.user);\n// \t}\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Maintenance Item",
+  "enabled": 1,
+  "modified": "2022-09-02 19:13:35.149045",
+  "module": null,
+  "name": "Maintenance Item-Form",
+  "script": "frappe.ui.form.on('Maintenance Item', {\n\tcreate_barcode_automatically(frm) {\n\t\tif(frm.doc.create_barcode_automatically== 1){\n\t\t    frm.set_df_property(\"barcode\",\"reqd\",0)\n\t\t    frm.set_value(\"barcode\",\"\")\n\t\t}else{\n\t\t    frm.set_df_property(\"barcode\",\"reqd\",1)\n\t\t}\n\t}\n})",
+  "view": "Form"
+ }
+]

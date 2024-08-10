@@ -1,0 +1,183 @@
+{
+ "actions": [],
+ "autoname": "field:template_name",
+ "creation": "2020-03-05 11:03:35.783547",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "column_break_2",
+  "dedicated_repair_warranty",
+  "section_break_2",
+  "template_name",
+  "warranty_period_type",
+  "warranty_period",
+  "customer_tolerance",
+  "section_break_5",
+  "warranty_bearing_rate",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "template_name",
+   "fieldtype": "Data",
+   "label": "Template Name",
+   "unique": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval: doc.warranty_period_type != \"\";",
+   "fieldname": "warranty_period",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Warranty Period",
+   "mandatory_depends_on": "eval: doc.warranty_period_type != \"\";"
+  },
+  {
+   "fieldname": "customer_tolerance",
+   "fieldtype": "Percent",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Customer Tolerance"
+  },
+  {
+   "fieldname": "section_break_5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "bold": 1,
+   "fieldname": "warranty_bearing_rate",
+   "fieldtype": "Table",
+   "label": "Warranty Bearing Rate",
+   "options": "Warranty Bearing Rate"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "warranty_period_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Warranty Period Type",
+   "options": "\nDays\nMonth\nYear"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "dedicated_repair_warranty",
+   "fieldtype": "Check",
+   "label": "Dedicated Repair Warranty"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Warranty Template",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-09-17 00:07:00.689198",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Warranty Template",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Warranty Template",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Directing",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance External",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Internal",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Payment",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Invoice",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

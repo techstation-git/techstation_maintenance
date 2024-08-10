@@ -1,0 +1,532 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "creation": "2022-11-17 21:35:01.081345",
+ "description": "A Product or a Service that is bought, sold or kept in stock.",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "contact_details_section",
+  "preferred_method_of_communication",
+  "mobile_no_1",
+  "column_break_6",
+  "mobile_no_2",
+  "mobile_no_3",
+  "watsapp",
+  "telegram",
+  "address_details_section",
+  "address",
+  "citytown",
+  "street",
+  "country",
+  "postal_code",
+  "column_break_17",
+  "house_number",
+  "apartment_number",
+  "floor",
+  "way_to_climb",
+  "special_marque",
+  "name_and_description_section",
+  "customer",
+  "maintenance_categories",
+  "item_sold_by_us",
+  "item",
+  "item_name",
+  "sales_invoice",
+  "column_break_36",
+  "warranty_status",
+  "barcode",
+  "create_barcode_automatically",
+  "warranty_template",
+  "warranty_start_date",
+  "warranty_end_date",
+  "address_and_contact_section",
+  "customer_address",
+  "address_display",
+  "column_break_39",
+  "contact",
+  "contact_display",
+  "phone",
+  "mobile_no",
+  "variant_details_section",
+  "serial_no",
+  "kilometer",
+  "item_color",
+  "item_models",
+  "item_colors",
+  "item_model",
+  "item_status",
+  "item_statuss",
+  "column_break_43",
+  "item_password",
+  "item_added_date",
+  "warranty_bearing_rates_section",
+  "warranty_bearing_rate",
+  "section_break_18",
+  "maintenance_invoice_items",
+  "section_break_11",
+  "description",
+  "receive_maintenance_item",
+  "maintenance_item_status",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "collapsible": 1,
+   "fieldname": "contact_details_section",
+   "fieldtype": "Section Break",
+   "label": "Contact Details"
+  },
+  {
+   "fieldname": "preferred_method_of_communication",
+   "fieldtype": "Data",
+   "label": "Preferred Method Of Communication",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mobile_no_1",
+   "fieldtype": "Data",
+   "label": "Mobile No 1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mobile_no_2",
+   "fieldtype": "Data",
+   "label": "Mobile No 2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mobile_no_3",
+   "fieldtype": "Data",
+   "label": "Mobile No 3",
+   "read_only": 1
+  },
+  {
+   "fieldname": "watsapp",
+   "fieldtype": "Data",
+   "label": "Watsapp",
+   "read_only": 1
+  },
+  {
+   "fieldname": "telegram",
+   "fieldtype": "Data",
+   "label": "Telegram",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "address_details_section",
+   "fieldtype": "Section Break",
+   "label": "Address Details"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "citytown",
+   "fieldtype": "Data",
+   "label": "City / Town",
+   "read_only": 1
+  },
+  {
+   "fieldname": "street",
+   "fieldtype": "Data",
+   "label": "Street",
+   "read_only": 1
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Data",
+   "label": "Country",
+   "read_only": 1
+  },
+  {
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "house_number",
+   "fieldtype": "Data",
+   "label": "House Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "apartment_number",
+   "fieldtype": "Data",
+   "label": "Apartment Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "floor",
+   "fieldtype": "Data",
+   "label": "Floor",
+   "read_only": 1
+  },
+  {
+   "fieldname": "way_to_climb",
+   "fieldtype": "Data",
+   "label": "Way To Climb",
+   "read_only": 1
+  },
+  {
+   "fieldname": "special_marque",
+   "fieldtype": "Data",
+   "label": "Special Marque",
+   "read_only": 1
+  },
+  {
+   "fieldname": "name_and_description_section",
+   "fieldtype": "Section Break",
+   "oldfieldtype": "Section Break",
+   "options": "fa fa-flag"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "maintenance_categories",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Maintenance Categories",
+   "oldfieldname": "item_group",
+   "oldfieldtype": "Link",
+   "options": "Maintenance Categorie"
+  },
+  {
+   "default": "0",
+   "fieldname": "item_sold_by_us",
+   "fieldtype": "Check",
+   "label": "Item Sold By Us"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "label": "Item",
+   "options": "Item"
+  },
+  {
+   "fetch_from": "item.item_name",
+   "fetch_if_empty": 1,
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.item_sold_by_us == 1;",
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice"
+  },
+  {
+   "fieldname": "column_break_36",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "warranty_status",
+   "fieldtype": "Select",
+   "label": "Warranty Status",
+   "options": "\nEnabled"
+  },
+  {
+   "fieldname": "barcode",
+   "fieldtype": "Data",
+   "label": "Maintenance Item Barcode",
+   "mandatory_depends_on": "eval: doc.create_barcode_automatically == 0",
+   "read_only_depends_on": "eval: doc.create_barcode_automatically == 1"
+  },
+  {
+   "default": "1",
+   "fieldname": "create_barcode_automatically",
+   "fieldtype": "Check",
+   "label": "Create Barcode Automatically"
+  },
+  {
+   "depends_on": "eval:doc.warranty_status == \"Enabled\"",
+   "fieldname": "warranty_template",
+   "fieldtype": "Link",
+   "label": "Warranty Template",
+   "options": "Warranty Template"
+  },
+  {
+   "depends_on": "eval:doc.warranty_status == \"Enabled\"",
+   "fieldname": "warranty_start_date",
+   "fieldtype": "Date",
+   "label": "Warranty Start Date",
+   "mandatory_depends_on": "eval:doc.warranty_status == \"Enabled\""
+  },
+  {
+   "depends_on": "eval: doc.warranty_status == \"Enabled\"",
+   "fieldname": "warranty_end_date",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "label": "Warranty End Date"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "address_and_contact_section",
+   "fieldtype": "Section Break",
+   "label": "Address and Contact"
+  },
+  {
+   "fieldname": "customer_address",
+   "fieldtype": "Link",
+   "label": "Customer Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "address_display",
+   "fieldtype": "Small Text",
+   "label": "Address Display",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_39",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact",
+   "fieldtype": "Link",
+   "label": "Contact",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "contact_display",
+   "fieldtype": "Small Text",
+   "label": "Contact Display",
+   "read_only": 1
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Mobile No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "variant_details_section",
+   "fieldtype": "Section Break",
+   "label": "Variant Details"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "serial_no",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "label": "Serial No"
+  },
+  {
+   "fieldname": "kilometer",
+   "fieldtype": "Float",
+   "label": "Kilometer"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "item_color",
+   "fieldtype": "Table MultiSelect",
+   "hidden": 1,
+   "label": "Item Color",
+   "options": "Item Color Table"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "item_model",
+   "fieldtype": "Table MultiSelect",
+   "hidden": 1,
+   "label": "Item Model",
+   "options": "Item Model Table"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "item_status",
+   "fieldtype": "Table MultiSelect",
+   "label": "Item Status",
+   "options": "Item Status Table"
+  },
+  {
+   "fieldname": "column_break_43",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "item_password",
+   "fieldtype": "Data",
+   "label": "Item Password"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Today",
+   "fieldname": "item_added_date",
+   "fieldtype": "Date",
+   "label": "Item Added Date"
+  },
+  {
+   "fieldname": "warranty_bearing_rates_section",
+   "fieldtype": "Section Break",
+   "label": "Warranty Bearing Rate"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval: doc.warranty_status == \"Enabled\"",
+   "fieldname": "warranty_bearing_rate",
+   "fieldtype": "Table",
+   "label": "Warranty Bearing Rate",
+   "options": "Maintenance Item Warranty Bearing",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.item_sold_by_us == 1;",
+   "fieldname": "section_break_18",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "maintenance_invoice_items",
+   "fieldtype": "Table",
+   "label": "Warranty Products",
+   "options": "Maintenance Item Table"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_11",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description",
+   "oldfieldname": "description",
+   "oldfieldtype": "Text"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "receive_maintenance_item",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Receive Maintenance Item",
+   "options": "Receive Maintenance Item"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "maintenance_item_status",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Maintenance Item Status"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Maintenance Item",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_colors",
+   "fieldtype": "Link",
+   "label": "Item Color",
+   "mandatory_depends_on": "eval: !doc.item",
+   "options": "Item Color"
+  },
+  {
+   "fieldname": "item_models",
+   "fieldtype": "Link",
+   "label": "Item Model",
+   "mandatory_depends_on": "eval: !doc.item",
+   "options": "Item Model"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "item_statuss",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Item Statuss",
+   "read_only": 1
+  }
+ ],
+ "icon": "fa fa-tag",
+ "is_submittable": 1,
+ "links": [],
+ "max_attachments": 1,
+ "modified": "2023-09-17 02:25:48.371235",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Item",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Item",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Supervisor",
+   "select": 1,
+   "share": 1
+  }
+ ],
+ "show_name_in_global_search": 1,
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer",
+ "track_changes": 1
+}

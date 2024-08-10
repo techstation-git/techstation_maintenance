@@ -1,0 +1,196 @@
+{
+ "actions": [],
+ "autoname": "MPR-.###",
+ "creation": "2020-03-13 08:20:03.041721",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "branch",
+  "customer",
+  "processing_type",
+  "processing",
+  "column_break_6",
+  "delivery_date",
+  "edit_delivery_date",
+  "warehouse",
+  "status",
+  "delivered_by",
+  "section_break_4",
+  "update_stock",
+  "items",
+  "total",
+  "amended_from",
+  "maintenance_order",
+  "maintenance_invoice"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Maintenance Material Receipt",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "update_stock",
+   "fieldtype": "Check",
+   "label": "Update Stock",
+   "read_only": 1
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Maintenance Material Receipt Table"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "undefined",
+   "fieldname": "maintenance_order",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Maintenance Order"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "undefined",
+   "fieldname": "maintenance_invoice",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Maintenance Invoice"
+  },
+  {
+   "allow_on_submit": 1,
+   "columns": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nPaid\nUnpaid\nDelivered\nStart",
+   "read_only": 1
+  },
+  {
+   "columns": 4,
+   "fieldname": "processing",
+   "fieldtype": "Dynamic Link",
+   "label": "Processing",
+   "options": "processing_type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "processing_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Processing Type",
+   "options": "Internal Processing\nExternal Processing"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "Delivery Date",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "edit_delivery_date",
+   "fieldtype": "Check",
+   "label": "Edit Delivery Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "delivered_by",
+   "fieldtype": "Link",
+   "label": "Delivered By",
+   "options": "User",
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-08-11 14:51:58.188221",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Material Receipt",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Material",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer",
+ "track_changes": 1
+}

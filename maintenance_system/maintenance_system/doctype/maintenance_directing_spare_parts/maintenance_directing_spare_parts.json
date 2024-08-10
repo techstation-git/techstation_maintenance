@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "creation": "2020-03-11 08:47:37.881618",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "delivery_date",
+  "qty",
+  "rate",
+  "amount",
+  "uom",
+  "maintenance_engineer_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "default": "1",
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty"
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "maintenance_engineer_notes",
+   "fieldtype": "Small Text",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Maintenance Engineer Notes"
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Delivery Date"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2022-10-21 14:20:59.097716",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Directing Spare Parts",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

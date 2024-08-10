@@ -1,0 +1,63 @@
+{
+ "actions": [],
+ "autoname": "field:maintenance_services",
+ "creation": "2020-03-12 11:45:48.615291",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "maintenance_services",
+  "link_with_item",
+  "pricing",
+  "branch"
+ ],
+ "fields": [
+  {
+   "fieldname": "maintenance_services",
+   "fieldtype": "Data",
+   "label": "Maintenance Services",
+   "translatable": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "link_with_item",
+   "fieldtype": "Link",
+   "label": "Link With Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "pricing",
+   "fieldtype": "Currency",
+   "label": "Pricing"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  }
+ ],
+ "links": [],
+ "modified": "2022-10-25 18:39:55.236320",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Service",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

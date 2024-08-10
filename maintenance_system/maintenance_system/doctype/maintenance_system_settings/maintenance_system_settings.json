@@ -1,0 +1,273 @@
+{
+ "actions": [],
+ "creation": "2020-03-30 07:49:06.701815",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "cost_center",
+  "terms_of_service",
+  "commission_based_on",
+  "column_break_4",
+  "debtors_account",
+  "tax_required",
+  "sales_taxes_and_charges_template",
+  "transfer_of_warranty_expense_to_accounts",
+  "from_account",
+  "to_account",
+  "commission_settings_section",
+  "payment_commission_from_account",
+  "column_break_11",
+  "payment_commission_to_account",
+  "section_break_4",
+  "cash_account",
+  "column_break_6",
+  "visa_account",
+  "payment_methods_section",
+  "payment_methods",
+  "item_barcode_section",
+  "maintenance_item_barcode_series",
+  "generate_barcode_on_barcode_type",
+  "item_barcode_type",
+  "length",
+  "column_break_14",
+  "default_price_list",
+  "curreny"
+ ],
+ "fields": [
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Cost Center",
+   "options": "Cost Center",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "debtors_account",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Debtors Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_barcode_section",
+   "fieldtype": "Section Break",
+   "label": "Item Barcode"
+  },
+  {
+   "depends_on": "eval: doc.generate_barcode_on_barcode_type == 0",
+   "description": "Example: ASCD.#### the automatic barcode will be created based on the Series",
+   "fieldname": "maintenance_item_barcode_series",
+   "fieldtype": "Data",
+   "label": "Maintenance Item Barcode Series"
+  },
+  {
+   "depends_on": "eval: doc.generate_barcode_on_barcode_type == 1",
+   "fieldname": "item_barcode_type",
+   "fieldtype": "Select",
+   "label": "Item Barcode Type",
+   "mandatory_depends_on": "eval: doc.generate_barcode_on_barcode_type == 1",
+   "options": "\nCODE128\nEAN-13\nUPC-A"
+  },
+  {
+   "default": "0",
+   "fieldname": "generate_barcode_on_barcode_type",
+   "fieldtype": "Check",
+   "label": "Generate Barcode On Barcode Type"
+  },
+  {
+   "depends_on": "eval: doc.item_barcode_type == \"CODE128\" && doc.generate_barcode_on_barcode_type == 1",
+   "fieldname": "length",
+   "fieldtype": "Int",
+   "label": "Length",
+   "mandatory_depends_on": "eval: doc.item_barcode_type == \"CODE128\""
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "cash_account",
+   "fieldtype": "Link",
+   "label": "Cash Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "visa_account",
+   "fieldtype": "Link",
+   "label": "Visa Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_price_list",
+   "fieldtype": "Link",
+   "label": "Default Price List",
+   "options": "Price List"
+  },
+  {
+   "fieldname": "curreny",
+   "fieldtype": "Link",
+   "label": "Curreny",
+   "options": "Currency"
+  },
+  {
+   "default": "0",
+   "fieldname": "transfer_of_warranty_expense_to_accounts",
+   "fieldtype": "Check",
+   "label": "Transfer of Warranty Expense to Accounts"
+  },
+  {
+   "depends_on": "eval: doc.transfer_of_warranty_expense_to_accounts == 1",
+   "fieldname": "from_account",
+   "fieldtype": "Link",
+   "label": "From Account",
+   "mandatory_depends_on": "eval: doc.transfer_of_warranty_expense_to_accounts == 1",
+   "options": "Account"
+  },
+  {
+   "depends_on": "eval: doc.transfer_of_warranty_expense_to_accounts == 1",
+   "fieldname": "to_account",
+   "fieldtype": "Link",
+   "label": "To Account",
+   "mandatory_depends_on": "eval: doc.transfer_of_warranty_expense_to_accounts == 1",
+   "options": "Account"
+  },
+  {
+   "fieldname": "payment_methods_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Methods"
+  },
+  {
+   "fieldname": "payment_methods",
+   "fieldtype": "Table",
+   "options": "Payment Methods"
+  },
+  {
+   "fieldname": "commission_based_on",
+   "fieldtype": "Select",
+   "label": "Commission Based On",
+   "options": "Grand Total\nNet Total"
+  },
+  {
+   "fieldname": "payment_commission_from_account",
+   "fieldtype": "Link",
+   "label": "Payment Commission From Account",
+   "options": "Account"
+  },
+  {
+   "bold": 1,
+   "collapsible": 1,
+   "fieldname": "commission_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Commission Settings"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_commission_to_account",
+   "fieldtype": "Link",
+   "label": "Payment Commission To Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "terms_of_service",
+   "fieldtype": "Link",
+   "label": "Terms of Service",
+   "options": "Terms and Conditions",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "tax_required",
+   "fieldtype": "Check",
+   "label": "Tax Enabled"
+  },
+  {
+   "depends_on": "tax_required",
+   "fieldname": "sales_taxes_and_charges_template",
+   "fieldtype": "Link",
+   "label": "Sales Taxes and Charges Template",
+   "mandatory_depends_on": "tax_required",
+   "options": "Sales Taxes and Charges Template"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2023-08-28 17:06:54.025967",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance System Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Maintenance Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Maintenance Order",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Maintenance Commission",
+   "select": 1,
+   "share": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

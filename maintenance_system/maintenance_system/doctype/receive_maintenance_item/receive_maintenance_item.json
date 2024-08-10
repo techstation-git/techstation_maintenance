@@ -1,0 +1,159 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "RMITEM-.###",
+ "creation": "2020-03-07 13:57:10.199082",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "customer",
+  "maintenance_item",
+  "receive_maintenance_barcode",
+  "create_barcode_automatically",
+  "completed_maintenance",
+  "receive_by",
+  "column_break_6",
+  "customer_notes",
+  "accessories",
+  "section_break_16",
+  "maintenance_malfunction",
+  "section_break_11",
+  "operations",
+  "status",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer_notes",
+   "fieldtype": "Small Text",
+   "label": "Customer Notes"
+  },
+  {
+   "fieldname": "section_break_16",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "maintenance_malfunction",
+   "fieldtype": "Table",
+   "label": "Maintenance Malfunction",
+   "options": "Receive Maintenance Items Table",
+   "reqd": 1
+  },
+  {
+   "fieldname": "receive_by",
+   "fieldtype": "Data",
+   "label": "Receive By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "accessories",
+   "fieldtype": "Small Text",
+   "label": "Accessories"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Available",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Available\nOccupied",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_11",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "operations",
+   "fieldtype": "Table",
+   "label": "Operations",
+   "options": "Maintenance Order Operations",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Receive Maintenance Item",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "maintenance_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Maintenance Item",
+   "options": "Maintenance Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "receive_maintenance_barcode",
+   "fieldtype": "Data",
+   "label": "Receive Maintenance Barcode",
+   "mandatory_depends_on": "eval: doc.create_barcode_automatically == 0",
+   "read_only_depends_on": "eval: doc.create_barcode_automatically == 1"
+  },
+  {
+   "default": "1",
+   "fieldname": "create_barcode_automatically",
+   "fieldtype": "Check",
+   "label": "Create Barcode Automatically"
+  },
+  {
+   "default": "0",
+   "fieldname": "completed_maintenance",
+   "fieldtype": "Check",
+   "label": "Status",
+   "read_only": 1
+  }
+ ],
+ "icon": "fa fa-tag",
+ "is_submittable": 1,
+ "links": [],
+ "max_attachments": 1,
+ "modified": "2022-10-25 17:37:07.384396",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Receive Maintenance Item",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "show_name_in_global_search": 1,
+ "sort_field": "idx desc,modified desc",
+ "sort_order": "DESC",
+ "title_field": "customer",
+ "track_changes": 1
+}

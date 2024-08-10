@@ -1,0 +1,36 @@
+{
+ "creation": "2020-03-26 11:55:24.259240",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "territory",
+  "days"
+ ],
+ "fields": [
+  {
+   "fieldname": "territory",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Territory",
+   "options": "Territory"
+  },
+  {
+   "fieldname": "days",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Days"
+  }
+ ],
+ "istable": 1,
+ "modified": "2020-03-26 11:55:24.259240",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Schedule Territory",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

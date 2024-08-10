@@ -1,0 +1,203 @@
+{
+ "actions": [],
+ "autoname": "field:person_name",
+ "creation": "2020-04-08 11:05:54.460373",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "enable",
+  "column_break_2",
+  "system_user",
+  "column_break_4",
+  "commission_enable",
+  "section_break_6",
+  "person_name",
+  "user",
+  "type",
+  "maintenance_department",
+  "territory",
+  "branch",
+  "warehouse",
+  "pos_profile",
+  "commission_type",
+  "amount",
+  "percentage",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "person_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Person Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "1",
+   "fieldname": "enable",
+   "fieldtype": "Check",
+   "label": "Enable"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "unique": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "\nInternal\nExternal",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.type === \"External\";",
+   "fieldname": "territory",
+   "fieldtype": "Table",
+   "label": "Territory",
+   "options": "Maintenance Team Territory"
+  },
+  {
+   "fieldname": "maintenance_department",
+   "fieldtype": "Link",
+   "label": "Maintenance Department",
+   "options": "Maintenance Department",
+   "reqd": 1
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "pos_profile",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "POS Profile",
+   "options": "POS Profile"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "system_user",
+   "fieldtype": "Check",
+   "label": "System User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Maintenance Team",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "commission_type",
+   "fieldtype": "Select",
+   "label": "Commission Type",
+   "options": "\nFixed Amount\nPercentage"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval: doc.commission_type == \"Fixed Amount\"",
+   "fieldname": "amount",
+   "fieldtype": "Float",
+   "label": "Amount",
+   "mandatory_depends_on": "eval: doc.commission_type == \"Fixed Amount\""
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval: doc.commission_type == \"Percentage\"",
+   "fieldname": "percentage",
+   "fieldtype": "Percent",
+   "label": "Percentage",
+   "mandatory_depends_on": "eval: doc.commission_type == \"Percentage\""
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "commission_enable",
+   "fieldtype": "Check",
+   "label": "Commission Enable"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-11-15 18:53:19.841650",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Team",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,1064 @@
+{
+ "actions": [],
+ "autoname": "MINV-.###",
+ "creation": "2020-03-17 07:52:44.517320",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "contact_details_section",
+  "preferred_method_of_communication",
+  "mobile_no_1",
+  "column_break_6",
+  "mobile_no_2",
+  "mobile_no_3",
+  "watsapp",
+  "telegram",
+  "address_details_section",
+  "address",
+  "citytown",
+  "street",
+  "country",
+  "postal_code",
+  "column_break_17",
+  "house_number",
+  "apartment_number",
+  "floor",
+  "way_to_climb",
+  "special_marque",
+  "section_break_23",
+  "branch",
+  "customer",
+  "customer_name",
+  "approval_to_add_items",
+  "territory",
+  "column_break_3",
+  "order_type",
+  "payment_method",
+  "pos_profile",
+  "delivery_date",
+  "company",
+  "confirmed_by",
+  "current_stage",
+  "commission_benificiary",
+  "column_break_31",
+  "posting_date",
+  "posting_time",
+  "edit_posting_date_and_time",
+  "edit_delivery_date",
+  "warranty_apply",
+  "address_and_contact_section",
+  "customer_address",
+  "address_display",
+  "column_break_38",
+  "contact",
+  "contact_display",
+  "phone",
+  "mobile_no",
+  "company_address",
+  "company_address_display",
+  "currency_and_price_list_section",
+  "currency",
+  "column_break_46",
+  "price_list",
+  "item_details_section",
+  "receive_maintenance_items",
+  "maintenance_item",
+  "kilometer",
+  "column_break_34",
+  "serial_no",
+  "maintenance_department",
+  "maintenance_team",
+  "section_break_7",
+  "warranty_template",
+  "warranty_type",
+  "warranty_status",
+  "customer_tolerance",
+  "column_break_11",
+  "warranty_start_date",
+  "warranty_expiry_date",
+  "notes_on_warranty",
+  "section_break_8",
+  "warranty_bearing_rate",
+  "section_break_14",
+  "service",
+  "section_break_9",
+  "items",
+  "section_break_55",
+  "total_qty",
+  "spare_part_quantity",
+  "column_break_10",
+  "service_total",
+  "total_amount",
+  "maintenance_taxes_and_charges_section",
+  "tax_category",
+  "sales_taxes_and_charges_template",
+  "tax",
+  "repair_warranty_section",
+  "warranty_template_repair",
+  "warranty_start_date_repair",
+  "warranty_expiry_date_repair",
+  "section_break_20",
+  "additional_dicount",
+  "company_bearing_ratio_for_item",
+  "company_bearing_ratio_for_service",
+  "column_break_22",
+  "discount",
+  "additional_discount_percentage",
+  "additional_discount_on_items",
+  "additional_discount_for_services",
+  "warranty_bearing_percentage",
+  "section_break_22",
+  "column_break_87",
+  "grand_total",
+  "service_net_total",
+  "outstanding_amount",
+  "column_break_g9eal",
+  "warranty_total",
+  "total_taxes_and_charges",
+  "paid_amount",
+  "section_break_11",
+  "advance_amount",
+  "rounding_adjustment",
+  "material_total",
+  "column_break_13",
+  "rounded_total",
+  "material_net_total",
+  "section_break_26",
+  "get_advance_payment",
+  "maintenance_advance_payment",
+  "processing_type",
+  "processing",
+  "column_break_116",
+  "maintenance_order",
+  "maintenance_directing",
+  "status",
+  "amended_from",
+  "payment_received",
+  "commission_section",
+  "commission_paid",
+  "maintenance_team_name",
+  "column_break_121",
+  "amount_eligible_for_commission",
+  "commission_type",
+  "commission_rate",
+  "total_commission",
+  "maintenance_team_section_section",
+  "table_127"
+ ],
+ "fields": [
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Maintenance Invoice",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "posting_time",
+   "fieldtype": "Time",
+   "label": "Posting Time",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "edit_posting_date_and_time",
+   "fieldtype": "Check",
+   "label": "Edit Posting Date & Time"
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break",
+   "label": "Warranty Details"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "options": "Maintenance Invoice Item",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "service",
+   "fieldtype": "Table",
+   "options": "Maintenance Invoice Service",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break",
+   "label": "Replaced Items"
+  },
+  {
+   "fieldname": "section_break_11",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "total_qty",
+   "fieldtype": "Float",
+   "label": "Total Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_13",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sales_taxes_and_charges_template",
+   "fieldtype": "Link",
+   "label": "Sales Taxes and Charges Template",
+   "options": "Sales Taxes and Charges Template"
+  },
+  {
+   "fieldname": "tax",
+   "fieldtype": "Table",
+   "label": "Tax",
+   "options": "Maintenance Taxes and Charges",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "total_taxes_and_charges",
+   "fieldtype": "Currency",
+   "label": "Total Taxes And Charges",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_22",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "grand_total",
+   "fieldtype": "Currency",
+   "label": "Grand Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rounding_adjustment",
+   "fieldtype": "Currency",
+   "label": "Rounding Adjustment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rounded_total",
+   "fieldtype": "Currency",
+   "label": "Rounded Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_26",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "get_advance_payment",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Get Advance Payment"
+  },
+  {
+   "fieldname": "maintenance_advance_payment",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "label": "Maintenance Advance Payment",
+   "options": "Advance Payment Allocation"
+  },
+  {
+   "fieldname": "service_total",
+   "fieldtype": "Currency",
+   "label": "Service Total",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "collapsible": 1,
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break",
+   "label": "Warranty Bearing Rate"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "service_net_total",
+   "fieldtype": "Currency",
+   "label": "Net Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "material_total",
+   "fieldtype": "Currency",
+   "label": "Total Amount Of Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "material_net_total",
+   "fieldtype": "Currency",
+   "label": "Material Net Total",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "collapsible": 1,
+   "fieldname": "section_break_20",
+   "fieldtype": "Section Break",
+   "label": "Additional Discount"
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "material_total",
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Spare Part Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "maintenance_order",
+   "fieldtype": "Link",
+   "label": "Maintenance Order",
+   "options": "Maintenance Order",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "\nUnpaid\nPaid\nPartly Paid\nDelivered",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Outstanding Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "advance_amount",
+   "fieldtype": "Currency",
+   "label": "Advance Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "warranty_template",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Warranty Template",
+   "options": "Warranty Template",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer_tolerance",
+   "fieldtype": "Percent",
+   "hidden": 1,
+   "label": "Customer Tolerance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "warranty_status",
+   "fieldtype": "Data",
+   "label": "Warranty Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "warranty_expiry_date",
+   "fieldtype": "Date",
+   "label": "Warranty Expiry Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes_on_warranty",
+   "fieldtype": "Data",
+   "label": "Notes On Warranty",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "collapsible": 1,
+   "fieldname": "section_break_14",
+   "fieldtype": "Section Break",
+   "label": "Service"
+  },
+  {
+   "fieldname": "processing_type",
+   "fieldtype": "Select",
+   "label": "Processing Type",
+   "options": "\nInternal Processing\nExternal Processing",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "processing",
+   "fieldtype": "Dynamic Link",
+   "label": "Processing",
+   "options": "processing_type",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "maintenance_directing",
+   "fieldtype": "Link",
+   "label": "Maintenance Directing",
+   "options": "Maintenance Directing",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "contact_details_section",
+   "fieldtype": "Section Break",
+   "label": "Contact Details"
+  },
+  {
+   "fieldname": "preferred_method_of_communication",
+   "fieldtype": "Data",
+   "label": "Preferred Method Of Communication",
+   "read_only": 1
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_standard_filter": 1,
+   "label": "Mobile No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mobile_no_1",
+   "fieldtype": "Data",
+   "label": "Mobile No 1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mobile_no_2",
+   "fieldtype": "Data",
+   "label": "Mobile No 2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mobile_no_3",
+   "fieldtype": "Data",
+   "label": "Mobile No 3",
+   "read_only": 1
+  },
+  {
+   "fieldname": "watsapp",
+   "fieldtype": "Data",
+   "label": "Watsapp",
+   "read_only": 1
+  },
+  {
+   "fieldname": "telegram",
+   "fieldtype": "Data",
+   "label": "Telegram",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "address_details_section",
+   "fieldtype": "Section Break",
+   "label": "Address Details"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "citytown",
+   "fieldtype": "Data",
+   "label": "City / Town",
+   "read_only": 1
+  },
+  {
+   "fieldname": "street",
+   "fieldtype": "Data",
+   "label": "Street",
+   "read_only": 1
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Data",
+   "label": "Country",
+   "read_only": 1
+  },
+  {
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "house_number",
+   "fieldtype": "Data",
+   "label": "House Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "apartment_number",
+   "fieldtype": "Data",
+   "label": "Apartment Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "floor",
+   "fieldtype": "Data",
+   "label": "Floor",
+   "read_only": 1
+  },
+  {
+   "fieldname": "way_to_climb",
+   "fieldtype": "Data",
+   "label": "Way To Climb",
+   "read_only": 1
+  },
+  {
+   "fieldname": "special_marque",
+   "fieldtype": "Data",
+   "label": "Special Marque",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_23",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "payment_method",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Payment Method",
+   "options": "Mode of Payment"
+  },
+  {
+   "bold": 1,
+   "fieldname": "item_details_section",
+   "fieldtype": "Section Break",
+   "in_preview": 1,
+   "label": "Item Details"
+  },
+  {
+   "fieldname": "receive_maintenance_items",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Receive Maintenance Items",
+   "options": "Receive Maintenance Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "maintenance_item",
+   "fieldtype": "Link",
+   "label": "Maintenance Item",
+   "options": "Maintenance Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_34",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "maintenance_department",
+   "fieldtype": "Link",
+   "label": "Maintenance Department",
+   "options": "Maintenance Department",
+   "read_only": 1
+  },
+  {
+   "fieldname": "maintenance_team",
+   "fieldtype": "Link",
+   "label": "Maintenance Team",
+   "options": "Maintenance Team",
+   "reqd": 1
+  },
+  {
+   "fieldname": "warranty_type",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Warranty Type",
+   "options": "\nFull Warranty\nPartial Warranty\nMonth",
+   "read_only": 1
+  },
+  {
+   "fieldname": "warranty_bearing_rate",
+   "fieldtype": "Table",
+   "options": "Maintenance Item Warranty Bearing"
+  },
+  {
+   "fieldname": "approval_to_add_items",
+   "fieldtype": "Select",
+   "label": "Approval To Add Items",
+   "options": "\nCustomer Review First\nApproved",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "order_type",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Order Type",
+   "options": "\nInternal\nExternal",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.order_type == \"External\"",
+   "fieldname": "territory",
+   "fieldtype": "Link",
+   "label": "Territory",
+   "options": "Territory",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "pos_profile",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "POS Profile",
+   "options": "POS Profile"
+  },
+  {
+   "fetch_from": "maintenance_item.warranty_start_date",
+   "fetch_if_empty": 1,
+   "fieldname": "warranty_start_date",
+   "fieldtype": "Date",
+   "label": "Warranty Start Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_55",
+   "fieldtype": "Section Break",
+   "label": "Quantity And Net Total"
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fetch_if_empty": 1,
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "address_and_contact_section",
+   "fieldtype": "Section Break",
+   "label": "Address and Contact"
+  },
+  {
+   "fieldname": "customer_address",
+   "fieldtype": "Link",
+   "label": "Customer Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "address_display",
+   "fieldtype": "Small Text",
+   "label": "Address Display",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_38",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact",
+   "fieldtype": "Link",
+   "label": "Contact",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "contact_display",
+   "fieldtype": "Small Text",
+   "label": "Contact Display",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "warranty_apply",
+   "fieldtype": "Check",
+   "label": "Warranty Apply"
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "Delivery Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "currency_and_price_list_section",
+   "fieldtype": "Section Break",
+   "label": "Currency and Price List",
+   "options": "fa fa-tag"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_46",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "price_list",
+   "fieldtype": "Link",
+   "label": "Price List",
+   "options": "Price List",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "spare_part_quantity",
+   "fieldtype": "Float",
+   "label": "Spare Part Quantity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_31",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_87",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "maintenance_taxes_and_charges_section",
+   "fieldtype": "Section Break",
+   "label": "Maintenance Taxes and Charges"
+  },
+  {
+   "fieldname": "tax_category",
+   "fieldtype": "Link",
+   "label": "Tax Category",
+   "options": "Tax Category"
+  },
+  {
+   "default": "Net Total",
+   "fieldname": "additional_dicount",
+   "fieldtype": "Select",
+   "label": "Apply Additional Discount On",
+   "options": "\nNet Total\nGrand Total",
+   "read_only_depends_on": "eval: !frappe.user_roles.includes(\"Maintenance Supervisor\")"
+  },
+  {
+   "fieldname": "discount",
+   "fieldtype": "Currency",
+   "label": "Additional Discount Amount (EGP)"
+  },
+  {
+   "default": "0",
+   "fieldname": "payment_received",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Payment Received"
+  },
+  {
+   "fieldname": "additional_discount_percentage",
+   "fieldtype": "Percent",
+   "label": "Additional Discount Percentage"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "repair_warranty_section",
+   "fieldtype": "Section Break",
+   "label": "Repair Warranty"
+  },
+  {
+   "fieldname": "warranty_template_repair",
+   "fieldtype": "Link",
+   "label": "Warranty Template",
+   "options": "Warranty Template"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "warranty_start_date_repair",
+   "fieldtype": "Date",
+   "label": "Warranty Start Date Repair",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "warranty_expiry_date_repair",
+   "fieldtype": "Date",
+   "label": "Warranty Expiry Date Repair",
+   "read_only": 1
+  },
+  {
+   "fieldname": "warranty_total",
+   "fieldtype": "Currency",
+   "label": "Warranty Bearing Discount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "warranty_bearing_percentage",
+   "fieldtype": "Percent",
+   "label": "Warranty Bearing Percentage",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "edit_delivery_date",
+   "fieldtype": "Check",
+   "label": "Edit Delivery Date"
+  },
+  {
+   "fieldname": "kilometer",
+   "fieldtype": "Float",
+   "label": "Kilometer",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "commission_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Commission"
+  },
+  {
+   "fieldname": "maintenance_team_name",
+   "fieldtype": "Link",
+   "label": "Maintenance Team Name",
+   "options": "Maintenance Team"
+  },
+  {
+   "fieldname": "column_break_121",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount_eligible_for_commission",
+   "fieldtype": "Float",
+   "label": "Amount Eligible for Commission"
+  },
+  {
+   "fieldname": "commission_rate",
+   "fieldtype": "Float",
+   "label": "Commission Rate"
+  },
+  {
+   "fieldname": "commission_type",
+   "fieldtype": "Data",
+   "label": "Commission Type"
+  },
+  {
+   "fieldname": "total_commission",
+   "fieldtype": "Float",
+   "label": "Total Commission"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "maintenance_team_section_section",
+   "fieldtype": "Section Break",
+   "label": "Maintenance Team"
+  },
+  {
+   "fieldname": "table_127",
+   "fieldtype": "Table",
+   "options": "Maintenance Team Table Invoice",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "commission_paid",
+   "fieldtype": "Check",
+   "label": "Commission Paid",
+   "read_only": 1
+  },
+  {
+   "fieldname": "confirmed_by",
+   "fieldtype": "Data",
+   "label": "Confirmed By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_stage",
+   "fieldtype": "Link",
+   "label": "Current Stage",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_116",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "commission_benificiary",
+   "fieldtype": "Link",
+   "label": "Commission Benificiary",
+   "options": "Maintenance Team"
+  },
+  {
+   "fetch_from": "maintenance_item.serial_no",
+   "fetch_if_empty": 1,
+   "fieldname": "serial_no",
+   "fieldtype": "Data",
+   "label": "Serial No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_address",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Company Address Name",
+   "options": "Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_address_display",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Company Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_g9eal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "additional_discount_on_items",
+   "fieldtype": "Percent",
+   "label": "Additional Discount on Items"
+  },
+  {
+   "default": "0",
+   "fieldname": "additional_discount_for_services",
+   "fieldtype": "Percent",
+   "label": "Additional Discount for Services"
+  },
+  {
+   "fieldname": "company_bearing_ratio_for_item",
+   "fieldtype": "Percent",
+   "label": "Company Bearing Ratio For Item"
+  },
+  {
+   "fieldname": "company_bearing_ratio_for_service",
+   "fieldtype": "Data",
+   "label": "Company Bearing Ratio For Service"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-09-17 00:39:43.973284",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Invoice",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Invoice",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Payment",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Supervisor",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer",
+ "track_changes": 1
+}

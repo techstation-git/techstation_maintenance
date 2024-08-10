@@ -1,0 +1,103 @@
+{
+ "actions": [],
+ "autoname": "field:car_name",
+ "creation": "2020-04-13 09:38:26.846406",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "section_break_2",
+  "car_name",
+  "type_of_car",
+  "car_model",
+  "column_break_5",
+  "chassis_number",
+  "licence_number",
+  "licence_expiry_date"
+ ],
+ "fields": [
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "car_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Car Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "type_of_car",
+   "fieldtype": "Data",
+   "label": "Type Of Car"
+  },
+  {
+   "fieldname": "car_model",
+   "fieldtype": "Data",
+   "label": "Car Model"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "chassis_number",
+   "fieldtype": "Data",
+   "label": "Chassis Number"
+  },
+  {
+   "fieldname": "licence_number",
+   "fieldtype": "Data",
+   "label": "Licence Number"
+  },
+  {
+   "fieldname": "licence_expiry_date",
+   "fieldtype": "Date",
+   "label": "Licence Expiry Date"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "links": [],
+ "modified": "2022-11-11 20:51:52.248947",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Support Car",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

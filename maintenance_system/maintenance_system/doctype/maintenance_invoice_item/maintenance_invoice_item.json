@@ -1,0 +1,122 @@
+{
+ "actions": [],
+ "creation": "2020-03-17 08:20:26.911356",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "delivery_date",
+  "qty",
+  "rate",
+  "amount",
+  "uom",
+  "discount_and_margin_section",
+  "margin_type",
+  "margin_rate_or_amount",
+  "rate_with_margin",
+  "column_break_11",
+  "discount_percentage",
+  "discount_amount",
+  "base_rate_with_margin"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty"
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Rate"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Delivery Date",
+   "mandatory_depends_on": "eval: doc.item_code"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "discount_and_margin_section",
+   "fieldtype": "Section Break",
+   "label": "Discount and Margin"
+  },
+  {
+   "fieldname": "margin_type",
+   "fieldtype": "Select",
+   "label": "Margin Type",
+   "options": "\nPercentage\nAmount"
+  },
+  {
+   "fieldname": "margin_rate_or_amount",
+   "fieldtype": "Float",
+   "label": "Margin Rate or Amount"
+  },
+  {
+   "fieldname": "rate_with_margin",
+   "fieldtype": "Currency",
+   "label": "Rate With Margin",
+   "options": "currency"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "discount_percentage",
+   "fieldtype": "Percent",
+   "label": "Discount (%) on Price List Rate with Margin"
+  },
+  {
+   "fieldname": "discount_amount",
+   "fieldtype": "Currency",
+   "label": "Discount Amount",
+   "options": "currency"
+  },
+  {
+   "fieldname": "base_rate_with_margin",
+   "fieldtype": "Currency",
+   "label": "Rate With Margin (Company Currency)",
+   "options": "Company:company:default_currency"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2022-10-26 11:47:36.525691",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Invoice Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

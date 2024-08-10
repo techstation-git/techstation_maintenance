@@ -1,0 +1,135 @@
+{
+ "actions": [],
+ "autoname": "MFB-.###",
+ "creation": "2020-04-13 08:11:10.132966",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "customer",
+  "invoice_number",
+  "invoice_date",
+  "section_break_4",
+  "bad",
+  "column_break_6",
+  "good",
+  "column_break_8",
+  "excellent",
+  "section_break_10",
+  "feedback",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "invoice_number",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Invoice Number",
+   "options": "Maintenance Invoice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "invoice_date",
+   "fieldtype": "Date",
+   "label": "Invoice Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "feedback",
+   "fieldtype": "Long Text",
+   "label": "Feedback"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Maintenance Feedback",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "bad",
+   "fieldtype": "Check",
+   "label": "Bad"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "good",
+   "fieldtype": "Check",
+   "label": "Good"
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "excellent",
+   "fieldtype": "Check",
+   "label": "Excellent"
+  },
+  {
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-11-02 20:02:52.192633",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Feedback",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Feedback",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,48 @@
+{
+ "actions": [],
+ "creation": "2020-03-12 08:57:01.480983",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "maintenance_service",
+  "price",
+  "maintenance_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "maintenance_service",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Service",
+   "options": "Maintenance Service"
+  },
+  {
+   "fetch_from": "maintenance_service.pricing",
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Price"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "maintenance_notes",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Maintenance Notes"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2022-10-21 14:22:55.698666",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Order Items",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

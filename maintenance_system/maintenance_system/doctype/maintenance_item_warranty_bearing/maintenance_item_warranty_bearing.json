@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-09-15 16:19:31.948293",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "repairing_tolerance_item",
+  "repairing_tolerance_services",
+  "repair_tolerence",
+  "full_warranty",
+  "partial_warranty",
+  "warranty_start_date",
+  "warranty_end_date"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "repair_tolerence",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Company Bearing Ratio"
+  },
+  {
+   "columns": 3,
+   "fieldname": "warranty_start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Warranty Start Date"
+  },
+  {
+   "columns": 3,
+   "fieldname": "warranty_end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Warranty End Date"
+  },
+  {
+   "columns": 2,
+   "default": "0",
+   "fieldname": "full_warranty",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Full Warranty"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "partial_warranty",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Partial Warranty",
+   "options": "\nItem\nService\nFull Warranty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "repairing_tolerance_item",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Company Bearing Ratio For Item"
+  },
+  {
+   "fieldname": "repairing_tolerance_services",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Company Bearing Ratio For Service"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-09-17 02:26:17.536538",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Item Warranty Bearing",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

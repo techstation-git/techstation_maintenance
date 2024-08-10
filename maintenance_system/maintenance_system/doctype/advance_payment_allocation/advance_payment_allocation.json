@@ -1,0 +1,101 @@
+{
+ "creation": "2020-03-18 09:33:19.927757",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "payment_entry",
+  "mode",
+  "date",
+  "amount",
+  "allocate_amount",
+  "pending",
+  "paid_from",
+  "paid_to",
+  "cost_center",
+  "total_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "payment_entry",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Payment Entry",
+   "options": "Maintenance Payment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mode",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Mode",
+   "read_only": 1
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "allocate_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Allocate Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pending",
+   "fieldtype": "Currency",
+   "label": "Pending Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "paid_from",
+   "fieldtype": "Link",
+   "label": "Paid From",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "paid_to",
+   "fieldtype": "Link",
+   "label": "Paid To",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2020-04-03 08:14:56.303534",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Advance Payment Allocation",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

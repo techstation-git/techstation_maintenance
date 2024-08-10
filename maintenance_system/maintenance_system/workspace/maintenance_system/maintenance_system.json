@@ -1,0 +1,296 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"Rt_gbhu6wy\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Maintenance System</span>\",\"col\":12}},{\"id\":\"YiK_nDvnr0\",\"type\":\"card\",\"data\":{\"card_name\":\"Maintenance Masters\",\"col\":4}},{\"id\":\"Wfj7RQ93ez\",\"type\":\"card\",\"data\":{\"card_name\":\"Invoices\",\"col\":4}},{\"id\":\"9AEqNmnwRf\",\"type\":\"card\",\"data\":{\"card_name\":\"Follow Up\",\"col\":4}},{\"id\":\"nJgxcCQ28n\",\"type\":\"card\",\"data\":{\"card_name\":\"Warehouse\",\"col\":4}},{\"id\":\"EMe2ZdoJq0\",\"type\":\"card\",\"data\":{\"card_name\":\"Commissions\",\"col\":4}},{\"id\":\"MaO7V830Po\",\"type\":\"card\",\"data\":{\"card_name\":\"Module Setup\",\"col\":4}}]",
+ "creation": "2023-08-08 16:01:19.660925",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Maintenance System",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Module Setup",
+   "link_count": 12,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Settings",
+   "link_count": 0,
+   "link_to": "Maintenance System Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Schedule",
+   "link_count": 0,
+   "link_to": "Maintenance Schedule List",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Warranty Template",
+   "link_count": 0,
+   "link_to": "Warranty Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Categorie",
+   "link_count": 0,
+   "link_to": "Maintenance Categorie",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Department",
+   "link_count": 0,
+   "link_to": "Maintenance Department",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Team",
+   "link_count": 0,
+   "link_to": "Maintenance Team",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Service",
+   "link_count": 0,
+   "link_to": "Maintenance Service",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Malfunction",
+   "link_count": 0,
+   "link_to": "Maintenance Malfunction",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Item Status",
+   "link_count": 0,
+   "link_to": "Item Status",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Item Color",
+   "link_count": 0,
+   "link_to": "Item Color",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Item Model",
+   "link_count": 0,
+   "link_to": "Item Model",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Car",
+   "link_count": 0,
+   "link_to": "Maintenance Support Car",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Masters",
+   "link_count": 5,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Item",
+   "link_count": 0,
+   "link_to": "Maintenance Item",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Order",
+   "link_count": 0,
+   "link_to": "Maintenance Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Directing",
+   "link_count": 0,
+   "link_to": "Maintenance Directing",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Internal Processing",
+   "link_count": 0,
+   "link_to": "Internal Processing",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "External Processing",
+   "link_count": 0,
+   "link_to": "External Processing",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Invoices",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Invoice",
+   "link_count": 0,
+   "link_to": "Maintenance Invoice",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Payment",
+   "link_count": 0,
+   "link_to": "Maintenance Payment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Commissions",
+   "link_count": 1,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Commission Payment",
+   "link_count": 0,
+   "link_to": "Commission Payment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Warehouse",
+   "link_count": 1,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Material",
+   "link_count": 0,
+   "link_to": "Maintenance Material Receipt",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Follow Up",
+   "link_count": 1,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Customer Feedback",
+   "link_count": 0,
+   "link_to": "Maintenance Feedback",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2023-08-08 16:50:51.534705",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance System",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 22.0,
+ "shortcuts": [],
+ "title": "Maintenance System"
+}

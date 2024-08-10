@@ -1,0 +1,332 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "MS-PAY-.###",
+ "creation": "2020-03-30 11:07:26.854395",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "payment_type",
+  "payment_order_status",
+  "column_break_5",
+  "posting_date",
+  "company",
+  "cost_center",
+  "mode_of_payment",
+  "party_section",
+  "party",
+  "mobile_no",
+  "column_break_10",
+  "party_balance",
+  "payment_accounts_section",
+  "paid_from",
+  "paid_from_account_balance",
+  "column_break_18",
+  "paid_to",
+  "paid_to_account_balance",
+  "payment_amounts_section",
+  "paid_amount",
+  "section_break_14",
+  "get_outstanding_invoice",
+  "references",
+  "section_break_34",
+  "total_allocated_amount",
+  "column_break_36",
+  "unallocated_amount",
+  "transaction_references",
+  "reference_no",
+  "column_break_23",
+  "reference_date",
+  "clearance_date",
+  "section_break_12",
+  "status",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "fieldname": "payment_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Payment Type",
+   "options": "Receive",
+   "print_hide": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_order_status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Payment Order Status",
+   "options": "Initiated\nPayment Ordered",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "print_hide": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Mode of Payment",
+   "options": "\nCash\nVisa",
+   "reqd": 1
+  },
+  {
+   "depends_on": "cost_center",
+   "fieldname": "party_section",
+   "fieldtype": "Section Break",
+   "label": "Payment From / To"
+  },
+  {
+   "bold": 1,
+   "fieldname": "party",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Party",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "party_balance",
+   "fieldtype": "Currency",
+   "label": "Party Balance",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "depends_on": "cost_center",
+   "fieldname": "payment_accounts_section",
+   "fieldtype": "Section Break",
+   "label": "Accounts"
+  },
+  {
+   "bold": 1,
+   "depends_on": "eval:(in_list([\"Internal Transfer\", \"Pay\"], doc.payment_type) || doc.party)",
+   "fieldname": "paid_from",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "label": "Account Paid From",
+   "options": "Account",
+   "print_hide": 1,
+   "reqd": 1
+  },
+  {
+   "depends_on": "paid_from",
+   "fieldname": "paid_from_account_balance",
+   "fieldtype": "Currency",
+   "label": "Account Balance",
+   "options": "paid_from_account_currency",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:(in_list([\"Internal Transfer\", \"Receive\"], doc.payment_type) || doc.party)",
+   "fieldname": "paid_to",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "label": "Account Paid To",
+   "options": "Account",
+   "print_hide": 1,
+   "reqd": 1
+  },
+  {
+   "depends_on": "paid_to",
+   "fieldname": "paid_to_account_balance",
+   "fieldtype": "Currency",
+   "label": "Account Balance",
+   "options": "paid_to_account_currency",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:(doc.paid_to && doc.paid_from)",
+   "fieldname": "payment_amounts_section",
+   "fieldtype": "Section Break",
+   "label": "Amount"
+  },
+  {
+   "bold": 1,
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount",
+   "options": "paid_from_account_currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_14",
+   "fieldtype": "Section Break",
+   "label": "Reference"
+  },
+  {
+   "default": "0",
+   "fieldname": "get_outstanding_invoice",
+   "fieldtype": "Check",
+   "label": "Get Outstanding Invoice"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "references",
+   "fieldtype": "Table",
+   "label": "Payment References",
+   "options": "Maintenance Payment Reference"
+  },
+  {
+   "fieldname": "section_break_34",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "total_allocated_amount",
+   "fieldtype": "Currency",
+   "label": "Total Allocated Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_36",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "unallocated_amount",
+   "fieldtype": "Currency",
+   "label": "Unallocated Amount",
+   "read_only": 1
+  },
+  {
+   "collapsible_depends_on": "cost_center",
+   "fieldname": "transaction_references",
+   "fieldtype": "Section Break",
+   "label": "Transaction ID"
+  },
+  {
+   "bold": 1,
+   "depends_on": "eval:(doc.paid_from && doc.paid_to)",
+   "fieldname": "reference_no",
+   "fieldtype": "Data",
+   "label": "Cheque/Reference No"
+  },
+  {
+   "fieldname": "column_break_23",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "depends_on": "eval:(doc.paid_from && doc.paid_to)",
+   "fieldname": "reference_date",
+   "fieldtype": "Date",
+   "label": "Cheque/Reference Date",
+   "search_index": 1
+  },
+  {
+   "depends_on": "eval:doc.docstatus==1",
+   "fieldname": "clearance_date",
+   "fieldtype": "Date",
+   "label": "Clearance Date",
+   "no_copy": 1,
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "cost_center",
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "\nDraft\nSubmitted\nCancelled\nBalance Available\nAllocated"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Maintenance Payment",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "label": "Mobile No"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-08-10 18:24:16.512795",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Payment",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Payment",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Supervisor",
+   "select": 1,
+   "share": 1
+  }
+ ],
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "party",
+ "track_changes": 1
+}

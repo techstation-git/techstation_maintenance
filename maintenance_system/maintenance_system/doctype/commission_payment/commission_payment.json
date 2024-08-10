@@ -1,0 +1,232 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:CP{####}",
+ "creation": "2022-11-10 16:06:00.995592",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "beneficiary",
+  "posting_date",
+  "from_date",
+  "to_date",
+  "get_invoices",
+  "approved_by",
+  "rejected_by",
+  "column_break_3",
+  "status",
+  "company",
+  "commission_type_section",
+  "percentage",
+  "fixed_amount",
+  "commission_based_on",
+  "transactions_section",
+  "table_6",
+  "section_break_10",
+  "total_paid_amount",
+  "column_break_12",
+  "total_commission",
+  "amended_from",
+  "workflow_state"
+ ],
+ "fields": [
+  {
+   "fieldname": "beneficiary",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Beneficiary",
+   "options": "Maintenance Team"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "To Date"
+  },
+  {
+   "depends_on": "eval: doc.docstatus < 1",
+   "fieldname": "get_invoices",
+   "fieldtype": "Button",
+   "label": "Get Invoices"
+  },
+  {
+   "fieldname": "transactions_section",
+   "fieldtype": "Section Break",
+   "label": "Transactions"
+  },
+  {
+   "fieldname": "table_6",
+   "fieldtype": "Table",
+   "options": "Transactions",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "commission_based_on",
+   "fieldtype": "Select",
+   "label": "Commission Based On",
+   "options": "Grand Total\nNet Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Commission Payment",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "workflow_state",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Workflow State",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "workflow_state",
+   "fetch_if_empty": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nPending\nApproved\nRejected",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_paid_amount",
+   "fieldtype": "Currency",
+   "label": "Total Paid Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_commission",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Commission",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "beneficiary.commission_type",
+   "fetch_if_empty": 1,
+   "fieldname": "commission_type_section",
+   "fieldtype": "Select",
+   "label": "Commission Type",
+   "options": "\nFixed Amount\nPercentage",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.commission_type_section == \"Percentage\"",
+   "fetch_from": "beneficiary.percentage",
+   "fetch_if_empty": 1,
+   "fieldname": "percentage",
+   "fieldtype": "Float",
+   "label": "Percentage",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.commission_type_section == \"Fixed Amount\"",
+   "fetch_from": "beneficiary.amount",
+   "fetch_if_empty": 1,
+   "fieldname": "fixed_amount",
+   "fieldtype": "Float",
+   "label": "Fixed Amount",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Title",
+   "unique": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "rejected_by",
+   "fieldtype": "Link",
+   "label": "Rejected By",
+   "options": "User",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-11-12 21:54:34.672597",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Commission Payment",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Commission",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

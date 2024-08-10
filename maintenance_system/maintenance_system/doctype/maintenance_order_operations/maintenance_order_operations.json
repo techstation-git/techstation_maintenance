@@ -1,0 +1,30 @@
+{
+ "creation": "2020-03-19 08:23:32.152051",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "maintenance_order"
+ ],
+ "fields": [
+  {
+   "fieldname": "maintenance_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Maintenance Order",
+   "options": "Maintenance Order",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2020-03-19 08:24:57.355967",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Order Operations",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

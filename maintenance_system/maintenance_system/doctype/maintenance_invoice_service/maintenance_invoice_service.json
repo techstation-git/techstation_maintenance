@@ -1,0 +1,37 @@
+{
+ "creation": "2020-03-06 08:52:37.302865",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "maintenance_service",
+  "price"
+ ],
+ "fields": [
+  {
+   "fieldname": "maintenance_service",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Service",
+   "options": "Maintenance Service"
+  },
+  {
+   "fetch_from": "maintenance_service.pricing",
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Price"
+  }
+ ],
+ "istable": 1,
+ "modified": "2020-03-21 18:46:03.387220",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Maintenance Invoice Service",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
