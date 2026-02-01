@@ -22,7 +22,7 @@ frappe.ui.form.on('Maintenance Order', {
             var date1 = ny + "-" + nm + "-" + ndate;
             frm.set_value("warranty_expiry_date", date1);
         }
-        
+
     },
     refresh: function (frm) {
         refresh_field("maintenance_malfunctions")
@@ -572,8 +572,8 @@ frappe.ui.form.on('Maintenance Order', {
 
                     }
                 });
-                if (!frm.doc.sales_taxes_and_charges_template && tabletransfer.tax_required && tabletransfer.sales_taxes_and_charges_template){
-                	frm.set_value("sales_taxes_and_charges_template", tabletransfer.sales_taxes_and_charges_template)
+                if (!frm.doc.sales_taxes_and_charges_template && tabletransfer.tax_required && tabletransfer.sales_taxes_and_charges_template) {
+                    frm.set_value("sales_taxes_and_charges_template", tabletransfer.sales_taxes_and_charges_template)
                     cur_frm.refresh_field("sales_taxes_and_charges_template");
                 }
 

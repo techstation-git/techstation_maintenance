@@ -119,7 +119,8 @@ fixtures = [
     {"dt": "Client Script", "filters": [
         [
             "dt", "in", [
-                "Warranty Template", "Maintenance Item", "Sales Invoice", "Maintenance Schedule List", "Maintenance Team"
+                "Warranty Template", "Maintenance Item", "Sales Invoice", "Maintenance Schedule List", "Maintenance Team",
+                "Maintenance Order"  # Operations permissions client script
             ]
         ]
     ]},
@@ -145,7 +146,11 @@ fixtures = [
                     "Payment Entry-allocated_in_maintenance",
                     "Stock Entry-maintenance_products_receipt",
                     "GL Entry-unallocated","Mode of Payment-show_in_maintenance_for_payment",
-                    "Customer-mobile","Branch-enable","Branch-default_branch"
+                    "Customer-mobile","Branch-enable","Branch-default_branch",
+                    # Phase 1: Maintenance Order enhancements
+                    "Maintenance Order-ticket_type",
+                    "Maintenance Order-linked_project",
+                    "Maintenance Order-sales_person"
                 ]
             ]
         ]
@@ -164,7 +169,8 @@ fixtures = [
                     "Maintenance Internal",
                     "Maintenance External",
                     "Maintenance Payment","Maintenance Commission",
-                    "Maintenance Material","Maintenance Supervisor"
+                    "Maintenance Material","Maintenance Supervisor",
+                    "Operations Officer"  # Phase 1: Hide prices from operations
 
                 ]
             ]

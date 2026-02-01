@@ -11,6 +11,7 @@
   "states": [
    {
     "allow_edit": "Maintenance Commission",
+    "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
     "message": "Successfully Saved",
@@ -18,12 +19,15 @@
     "parent": "Commission Payment",
     "parentfield": "states",
     "parenttype": "Workflow",
+    "send_email": 0,
     "state": "Draft",
     "update_field": "status",
-    "update_value": "Draft"
+    "update_value": "Draft",
+    "workflow_builder_id": null
    },
    {
     "allow_edit": "Maintenance Commission",
+    "avoid_status_override": 0,
     "doc_status": "1",
     "is_optional_state": 0,
     "message": "Successfully Approved",
@@ -31,12 +35,15 @@
     "parent": "Commission Payment",
     "parentfield": "states",
     "parenttype": "Workflow",
+    "send_email": 0,
     "state": "Approved",
     "update_field": "status",
-    "update_value": "Approved"
+    "update_value": "Approved",
+    "workflow_builder_id": null
    },
    {
     "allow_edit": "Maintenance Commission",
+    "avoid_status_override": 0,
     "doc_status": "2",
     "is_optional_state": 0,
     "message": "Successfully Rejected",
@@ -44,9 +51,11 @@
     "parent": "Commission Payment",
     "parentfield": "states",
     "parenttype": "Workflow",
+    "send_email": 0,
     "state": "Rejected",
     "update_field": "status",
-    "update_value": "Rejected"
+    "update_value": "Rejected",
+    "workflow_builder_id": null
    }
   ],
   "transitions": [
@@ -59,7 +68,9 @@
     "parent": "Commission Payment",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Draft"
+    "send_email_to_creator": 0,
+    "state": "Draft",
+    "workflow_builder_id": null
    },
    {
     "action": "Reject",
@@ -70,9 +81,12 @@
     "parent": "Commission Payment",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Approved"
+    "send_email_to_creator": 0,
+    "state": "Approved",
+    "workflow_builder_id": null
    }
   ],
+  "workflow_data": null,
   "workflow_name": "Commission Payment",
   "workflow_state_field": "workflow_state"
  }
