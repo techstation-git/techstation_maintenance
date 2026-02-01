@@ -16,6 +16,10 @@ def get_data():
                 'items': [ "Internal Processing", "External Processing"]
             },
 			{
+                'label': _('Custody'),
+                'items': [ "Technician Custody"]
+            },
+			{
                 'label': _('Fullfillment'),
                 'items': [ "Maintenance Invoice"]
             }

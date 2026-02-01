@@ -1,0 +1,225 @@
+{
+    "actions": [],
+    "allow_rename": 1,
+    "autoname": "naming_series:",
+    "creation": "2026-02-01 14:36:00.000000",
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+        "naming_series",
+        "maintenance_order",
+        "employee",
+        "employee_name",
+        "column_break_4",
+        "issue_date",
+        "expected_return_date",
+        "actual_return_date",
+        "custody_status",
+        "section_break_9",
+        "items",
+        "section_break_11",
+        "total_issue_value",
+        "total_return_value",
+        "variance_value",
+        "column_break_15",
+        "stock_entry_issue",
+        "stock_entry_return",
+        "section_break_18",
+        "notes",
+        "amended_from"
+    ],
+    "fields": [
+        {
+            "fieldname": "naming_series",
+            "fieldtype": "Select",
+            "label": "Series",
+            "options": "TCUST-.####",
+            "reqd": 1
+        },
+        {
+            "fieldname": "maintenance_order",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Maintenance Order",
+            "options": "Maintenance Order",
+            "reqd": 1
+        },
+        {
+            "fieldname": "maintenance_team",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Maintenance Team",
+            "options": "Maintenance Team",
+            "reqd": 1
+        },
+        {
+            "fetch_from": "maintenance_team.name",
+            "fieldname": "team_name",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Team Name",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_4",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "Today",
+            "fieldname": "issue_date",
+            "fieldtype": "Date",
+            "in_list_view": 1,
+            "label": "Issue Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "expected_return_date",
+            "fieldtype": "Date",
+            "label": "Expected Return Date"
+        },
+        {
+            "fieldname": "actual_return_date",
+            "fieldtype": "Date",
+            "label": "Actual Return Date",
+            "read_only": 1
+        },
+        {
+            "default": "Issued",
+            "fieldname": "custody_status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Status",
+            "options": "Issued\nPartially Returned\nFully Returned\nOverdue",
+            "reqd": 1
+        },
+        {
+            "fieldname": "section_break_9",
+            "fieldtype": "Section Break",
+            "label": "Custody Items"
+        },
+        {
+            "fieldname": "items",
+            "fieldtype": "Table",
+            "label": "Items",
+            "options": "Custody Item",
+            "reqd": 1
+        },
+        {
+            "collapsible": 1,
+            "fieldname": "section_break_11",
+            "fieldtype": "Section Break",
+            "label": "Financial Summary"
+        },
+        {
+            "fieldname": "total_issue_value",
+            "fieldtype": "Currency",
+            "label": "Total Issue Value",
+            "read_only": 1
+        },
+        {
+            "fieldname": "total_return_value",
+            "fieldtype": "Currency",
+            "label": "Total Return Value",
+            "read_only": 1
+        },
+        {
+            "description": "Consumed/Damaged/Lost items value",
+            "fieldname": "variance_value",
+            "fieldtype": "Currency",
+            "label": "Variance Value",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_15",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "stock_entry_issue",
+            "fieldtype": "Link",
+            "label": "Stock Entry (Issue)",
+            "options": "Stock Entry",
+            "read_only": 1
+        },
+        {
+            "fieldname": "stock_entry_return",
+            "fieldtype": "Link",
+            "label": "Stock Entry (Return)",
+            "options": "Stock Entry",
+            "read_only": 1
+        },
+        {
+            "collapsible": 1,
+            "fieldname": "section_break_18",
+            "fieldtype": "Section Break",
+            "label": "Additional Notes"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Text",
+            "label": "Notes"
+        },
+        {
+            "fieldname": "amended_from",
+            "fieldtype": "Link",
+            "label": "Amended From",
+            "no_copy": 1,
+            "options": "Technician Custody",
+            "print_hide": 1,
+            "read_only": 1
+        }
+    ],
+    "index_web_pages_for_search": 1,
+    "is_submittable": 1,
+    "links": [],
+    "modified": "2026-02-01 14:36:00.000000",
+    "modified_by": "Administrator",
+    "module": "Maintenance System",
+    "name": "Technician Custody",
+    "naming_rule": "By \"Naming Series\" field",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Maintenance Manager",
+            "share": 1,
+            "submit": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Maintenance Supervisor",
+            "share": 1,
+            "submit": 1,
+            "write": 1
+        },
+        {
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Operations Officer",
+            "share": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}
