@@ -11,6 +11,20 @@ class MaintenanceOrder(Document):
         if not self.maintenance_order_added_by:
             self.maintenance_order_added_by = frappe.session.user
         
+        # Phase 2: Custody Management - Prevent ticket closure without custody return
+        self.validate_custody_before_completion()
+    
+    def validate_custody_before_completion(self):
+        """Ensure custody is returned before completing ticket"""
+        if self.status == "Complete" and self.custody_issued:
+            if self.custody_status not in ["Fully Returned", "Not Issued"]:
+                frappe.throw(
+                    f"Cannot complete maintenance order. Custody items are still {self.custody_status}. "
+                    f"Please return all custody items first.<br><br>"
+                    f"Custody Record: {frappe.utils.get_link_to_form('Technician Custody', self.linked_custody)}",
+                    title="Custody Not Returned"
+                )
+        
     def get_company(self):
         if self:
             get_company = frappe.get_doc("Maintenance System Settings")
