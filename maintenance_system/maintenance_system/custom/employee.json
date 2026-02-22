@@ -1,0 +1,10 @@
+[
+    {
+        "fieldname": "technician_type",
+        "fieldtype": "Select",
+        "label": "Technician Type",
+        "options": "\nTechnician\nAssistant",
+        "owner": "Administrator",
+        "insert_after": "designation"
+    }
+]

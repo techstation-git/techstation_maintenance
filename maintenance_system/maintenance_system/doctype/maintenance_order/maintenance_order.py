@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 import frappe
-from frappe import msgprint
+from frappe import msgprint, _
 from frappe.model.document import Document
 from frappe.utils import get_link_to_form, today
 from frappe.model.mapper import get_mapped_doc
@@ -10,21 +10,62 @@ class MaintenanceOrder(Document):
     def validate(self):
         if not self.maintenance_order_added_by:
             self.maintenance_order_added_by = frappe.session.user
+        self.validate_custody()
+        self.validate_service_report()
+        self.set_default_ticket_type()
+        self.calculate_rewards()
+        self.log_status_change()
+
+    def validate_custody(self):
+        if self.status == "Complete":
+            outstanding_custody = frappe.get_all("Technician Custody", 
+                                                 filters={"maintenance_order": self.name, "status": ["!=", "Fully Returned"], "docstatus": 1})
+            if outstanding_custody:
+                frappe.throw(_("Cannot complete Maintenance Order {0} until all linked Technician Custody items are fully returned.").format(self.name))
+
+    def validate_service_report(self):
+        if self.status == "Complete":
+            service_report = frappe.get_all("Maintenance Service Report", 
+                                             filters={"maintenance_order": self.name, "docstatus": 1})
+            if not service_report:
+                frappe.throw(_("Cannot complete Maintenance Order {0} without at least one submitted Maintenance Service Report.").format(self.name))
         
-        # Phase 2: Custody Management - Prevent ticket closure without custody return
-        self.validate_custody_before_completion()
-    
-    def validate_custody_before_completion(self):
-        """Ensure custody is returned before completing ticket"""
-        if self.status == "Complete" and self.custody_issued:
-            if self.custody_status not in ["Fully Returned", "Not Issued"]:
-                frappe.throw(
-                    f"Cannot complete maintenance order. Custody items are still {self.custody_status}. "
-                    f"Please return all custody items first.<br><br>"
-                    f"Custody Record: {frappe.utils.get_link_to_form('Technician Custody', self.linked_custody)}",
-                    title="Custody Not Returned"
-                )
+    def set_default_ticket_type(self):
+        if not self.ticket_type:
+            default_type = frappe.db.get_value("Maintenance Ticket Type", {"is_default": 1}, "name")
+            if default_type:
+                self.ticket_type = default_type
+
+    def calculate_rewards(self):
+        """
+        Metrics:
+        1. by operation = fixed amount X count
+        2. by Percentage = (% of total ticket - material cost)
+        """
+        total_amount = self.total_amount or 0
+        material_cost = self.total or 0 # Sum of spare parts
         
+        commissionable_amount = total_amount - material_cost
+        
+        for d in self.get("maintenance_assignments"):
+            if d.reward_mode == "Percentage":
+                d.calculated_reward = (commissionable_amount * (d.reward_amount or 0) / 100)
+            elif d.reward_mode == "Fixed":
+                d.calculated_reward = (d.reward_amount or 0) * (d.count or 1)
+
+    def log_status_change(self):
+        """Automatically log status updates in progress_logs."""
+        if self.is_new():
+            return
+            
+        old_status = frappe.db.get_value("Maintenance Order", self.name, "status")
+        if old_status and old_status != self.status:
+            self.append("progress_logs", {
+                "date": frappe.utils.now_datetime(),
+                "author": frappe.session.user,
+                "log_details": f"Status changed from '{old_status}' to '{self.status}'"
+            })
+
     def get_company(self):
         if self:
             get_company = frappe.get_doc("Maintenance System Settings")
@@ -371,3 +412,68 @@ def check_team(branch):
     get_data = frappe.db.sql(""" select name from `tabMaintenance Team` where enable=1 {0}""".format(cond))
     if get_data:
         return get_data
+
+
+def notify_sales_person_on_create(doc, method=None):
+    """Notify the assigned sales person when a new Maintenance Order is created."""
+    if not doc.sales_person_user:
+        return
+    try:
+        sales_user_email = frappe.db.get_value("User", doc.sales_person_user, "email")
+        if not sales_user_email:
+            return
+        frappe.sendmail(
+            recipients=[sales_user_email],
+            subject=f"New Maintenance Ticket Created: {doc.name}",
+            message=f"""
+            <p>Dear Sales Team,</p>
+            <p>A new maintenance ticket has been created and assigned to you:</p>
+            <ul>
+                <li><b>Ticket:</b> {doc.name}</li>
+                <li><b>Customer:</b> {doc.customer}</li>
+                <li><b>Type:</b> {doc.ticket_type or doc.order_type}</li>
+                <li><b>Status:</b> {doc.status}</li>
+                <li><b>Issue Date:</b> {doc.issue_date}</li>
+            </ul>
+            <p>Please follow up with the operations team to ensure timely resolution.</p>
+            """
+        )
+    except Exception:
+        frappe.log_error(frappe.get_traceback(), "Maintenance Order: notify_sales_person_on_create failed")
+
+
+def notify_sales_person_on_update(doc, method=None):
+    """Notify the assigned sales person when a Maintenance Order's status changes."""
+    if not doc.sales_person_user:
+        return
+
+    # Only send notification if status has actually changed
+    prev_status = frappe.db.get_value("Maintenance Order", doc.name, "status")
+    if prev_status == doc.status:
+        return
+
+    try:
+        sales_user_email = frappe.db.get_value("User", doc.sales_person_user, "email")
+        if not sales_user_email:
+            return
+
+        subject = f"Maintenance Ticket {doc.name} – Status Updated"
+        if doc.status == "Complete":
+            subject = f"✅ Maintenance Ticket {doc.name} – Completed"
+
+        frappe.sendmail(
+            recipients=[sales_user_email],
+            subject=subject,
+            message=f"""
+            <p>Dear Sales Team,</p>
+            <p>Maintenance ticket <b>{doc.name}</b> has been updated:</p>
+            <ul>
+                <li><b>Customer:</b> {doc.customer}</li>
+                <li><b>Previous Status:</b> {prev_status}</li>
+                <li><b>New Status:</b> {doc.status}</li>
+            </ul>
+            <p>Please review the ticket for any required action on your end.</p>
+            """
+        )
+    except Exception:
+        frappe.log_error(frappe.get_traceback(), "Maintenance Order: notify_sales_person_on_update failed")

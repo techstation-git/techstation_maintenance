@@ -1,0 +1,50 @@
+{
+    "actions": [],
+    "creation": "2026-02-22 11:15:00.000000",
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+        "date",
+        "author",
+        "log_details"
+    ],
+    "fields": [
+        {
+            "default": "Now",
+            "fieldname": "date",
+            "fieldtype": "Datetime",
+            "in_list_view": 1,
+            "label": "Date",
+            "read_only": 1
+        },
+        {
+            "default": "Session User",
+            "fieldname": "author",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Author",
+            "options": "User",
+            "read_only": 1
+        },
+        {
+            "fieldname": "log_details",
+            "fieldtype": "Small Text",
+            "in_list_view": 1,
+            "label": "Log Details",
+            "reqd": 1
+        }
+    ],
+    "index_web_pages_for_search": 1,
+    "istable": 1,
+    "links": [],
+    "modified": "2026-02-22 11:15:00.000000",
+    "modified_by": "Administrator",
+    "module": "Maintenance System",
+    "name": "Maintenance Log",
+    "owner": "Administrator",
+    "permissions": [],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": []
+}
