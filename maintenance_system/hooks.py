@@ -95,9 +95,10 @@ doc_events = {
     "Customer": {
         "validate":"maintenance_system.customization.customer.on_update_mobile"
     },
-    # "POS Profile": {
-    #     "validate": "maintenance_system.customization.pos_profile.create_delete_pos_profile"
-    # }
+    "Maintenance Order": {
+        "after_insert": "maintenance_system.maintenance_system.doctype.maintenance_order.maintenance_order.notify_sales_person_on_create",
+        "on_update": "maintenance_system.maintenance_system.doctype.maintenance_order.maintenance_order.notify_sales_person_on_update"
+    }
 }
 
 
@@ -115,12 +116,15 @@ fixtures = [
         ]
     },
     {"dt": "DocType", "filters": [
-        ["name", "in", ["Maintenance Schedule List"]]]},
+        ["name", "in", ["Maintenance Schedule List", "Technician Custody", "Custody Item", "Maintenance Assignment", "Maintenance Log", "Maintenance Cost", "Maintenance Ticket Type"]]]},
+    {"dt": "Report", "filters": [
+        ["name", "in", ["General Maintenance Report", "Inventory Consumption Report", "Maintenance Cost Analysis"]]]},
+    {"dt": "Custom Field", "filters": [
+        ["fieldname", "in", ["technician_type"]]]},
     {"dt": "Client Script", "filters": [
         [
             "dt", "in", [
-                "Warranty Template", "Maintenance Item", "Sales Invoice", "Maintenance Schedule List", "Maintenance Team",
-                "Maintenance Order"  # Operations permissions client script
+                "Warranty Template", "Maintenance Item", "Sales Invoice", "Maintenance Schedule List", "Maintenance Team"
             ]
         ]
     ]},
@@ -147,10 +151,8 @@ fixtures = [
                     "Stock Entry-maintenance_products_receipt",
                     "GL Entry-unallocated","Mode of Payment-show_in_maintenance_for_payment",
                     "Customer-mobile","Branch-enable","Branch-default_branch",
-                    # Phase 1: Maintenance Order enhancements
-                    "Maintenance Order-ticket_type",
-                    "Maintenance Order-linked_project",
-                    "Maintenance Order-sales_person"
+                    "Employee-specializations",
+                    "Employee-technician_type"
                 ]
             ]
         ]
@@ -170,7 +172,9 @@ fixtures = [
                     "Maintenance External",
                     "Maintenance Payment","Maintenance Commission",
                     "Maintenance Material","Maintenance Supervisor",
-                    "Operations Officer"  # Phase 1: Hide prices from operations
+                    "Operations Officer",
+                    "Technician",
+                    "Assistant"
 
                 ]
             ]
@@ -191,7 +195,15 @@ fixtures = [
                     'Maintenance Team','Maintenance System Settings','External Processing',
                     'Item Color','Contact','Maintenance Material Receipt',
                     'Sales Taxes and Charges Template','Branch','Pick List','Item Model','Maintenance Order',
-                    'User Permission','Customer','Web Template','Cost Center','Price List'
+                    'User Permission','Customer','Web Template','Cost Center','Price List',
+                    'Maintenance Material Request','Employee Specialization',
+        {"doctype": "Technician Custody"},
+        {"doctype": "Custody Item"},
+        {"doctype": "Maintenance Service Report"},
+        {"doctype": "Maintenance Assignment"},
+        {"doctype": "Maintenance Log"},
+        {"doctype": "Maintenance Cost"},
+        {"doctype": "Maintenance Ticket Type"},
                 ]
             ]
         ]
@@ -214,23 +226,11 @@ fixtures = [
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"maintenance_system.tasks.all"
-# 	],
-# 	"daily": [
-# 		"maintenance_system.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"maintenance_system.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"maintenance_system.tasks.weekly"
-# 	]
-# 	"monthly": [
-# 		"maintenance_system.tasks.monthly"
-# 	]
-# }
+scheduler_events = {
+    "daily": [
+        "maintenance_system.tasks.check_overdue_tickets"
+    ]
+}
 
 # Testing
 # -------

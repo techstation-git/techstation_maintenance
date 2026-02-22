@@ -1,0 +1,173 @@
+{
+    "actions": [],
+    "allow_import": 1,
+    "autoname": "SR.#####",
+    "creation": "2026-02-22 08:48:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "maintenance_order",
+        "customer",
+        "column_break_3",
+        "technician",
+        "service_date",
+        "service_time",
+        "report_section",
+        "findings",
+        "work_performed",
+        "recommendations",
+        "signature_section",
+        "customer_name",
+        "customer_designation",
+        "column_break_13",
+        "customer_signature",
+        "feedback_section",
+        "customer_feedback",
+        "amended_from"
+    ],
+    "fields": [
+        {
+            "fieldname": "maintenance_order",
+            "fieldtype": "Link",
+            "label": "Maintenance Order",
+            "options": "Maintenance Order",
+            "reqd": 1
+        },
+        {
+            "fetch_from": "maintenance_order.customer",
+            "fieldname": "customer",
+            "fieldtype": "Link",
+            "label": "Customer",
+            "options": "Customer",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_3",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "technician",
+            "fieldtype": "Link",
+            "label": "Technician",
+            "options": "Employee",
+            "reqd": 1
+        },
+        {
+            "fieldname": "service_date",
+            "fieldtype": "Date",
+            "label": "Service Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "service_time",
+            "fieldtype": "Time",
+            "label": "Service Time"
+        },
+        {
+            "fieldname": "report_section",
+            "fieldtype": "Section Break",
+            "label": "Service Report Details"
+        },
+        {
+            "fieldname": "findings",
+            "fieldtype": "Small Text",
+            "label": "Findings / Diagnosis",
+            "reqd": 1
+        },
+        {
+            "fieldname": "work_performed",
+            "fieldtype": "Text",
+            "label": "Work Performed",
+            "reqd": 1
+        },
+        {
+            "fieldname": "recommendations",
+            "fieldtype": "Small Text",
+            "label": "Recommendations"
+        },
+        {
+            "fieldname": "signature_section",
+            "fieldtype": "Section Break",
+            "label": "Customer Acceptance"
+        },
+        {
+            "fieldname": "customer_name",
+            "fieldtype": "Data",
+            "label": "Customer Name",
+            "reqd": 1
+        },
+        {
+            "fieldname": "customer_designation",
+            "fieldtype": "Data",
+            "label": "Customer Designation"
+        },
+        {
+            "fieldname": "column_break_13",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "customer_signature",
+            "fieldtype": "Signature",
+            "label": "Customer Signature",
+            "reqd": 1
+        },
+        {
+            "fieldname": "feedback_section",
+            "fieldtype": "Section Break",
+            "label": "Feedback"
+        },
+        {
+            "fieldname": "customer_feedback",
+            "fieldtype": "Small Text",
+            "label": "Customer Feedback"
+        },
+        {
+            "fieldname": "amended_from",
+            "fieldtype": "Link",
+            "label": "Amended From",
+            "no_copy": 1,
+            "options": "Maintenance Service Report",
+            "print_hide": 1,
+            "read_only": 1
+        }
+    ],
+    "index_web_pages_for_search": 1,
+    "is_submittable": 1,
+    "links": [],
+    "modified": "2026-02-22 08:48:00.000000",
+    "modified_by": "Administrator",
+    "module": "Maintenance System",
+    "name": "Maintenance Service Report",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Maintenance Order",
+            "share": 1,
+            "submit": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 0,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Operations Officer",
+            "share": 1,
+            "submit": 0,
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": []
+}

@@ -373,6 +373,62 @@ frappe.ui.form.on('Maintenance Order', {
             }, ("Create"))
         }
 
+        if (frm.doc.docstatus == 1 && frm.doc.status == "In Processing") {
+            frm.add_custom_button(__("Issue Custody"), function () {
+                frm.trigger("make_technician_custody");
+            }, __("Create"));
+
+            frm.add_custom_button(__("Service Report"), function () {
+                frappe.new_doc("Maintenance Service Report", {
+                    maintenance_order: frm.doc.name,
+                    customer: frm.doc.customer
+                });
+            }, __("Create"));
+        }
+
+        if (frm.doc.docstatus == 1) {
+            frm.add_custom_button(__("Technician Custody"), function () {
+                frappe.set_route("List", "Technician Custody", { maintenance_order: frm.doc.name });
+            }, __("Go To"));
+        }
+    },
+    make_technician_custody: function (frm) {
+        let d = new frappe.ui.Dialog({
+            title: __("Issue Custody"),
+            fields: [
+                {
+                    label: __("Technician"),
+                    fieldname: "employee",
+                    fieldtype: "Link",
+                    options: "Employee",
+                    reqd: 1
+                },
+                {
+                    label: __("Original Warehouse"),
+                    fieldname: "original_warehouse",
+                    fieldtype: "Link",
+                    options: "Warehouse",
+                    reqd: 1
+                }
+            ],
+            primary_action_label: __("Proceed"),
+            primary_action(values) {
+                frappe.model.with_doctype("Technician Custody", function () {
+                    let new_doc = frappe.model.get_new_doc("Technician Custody");
+                    new_doc.maintenance_order = frm.doc.name;
+                    new_doc.employee = values.employee;
+                    new_doc.original_warehouse = values.original_warehouse;
+
+                    // Optional: Pull items from Maintenance Order child tables if needed, 
+                    // or just open the form for manual entry.
+                    // For now, let's just open the form with initial values.
+
+                    frappe.set_route("Form", "Technician Custody", new_doc.name);
+                });
+                d.hide();
+            }
+        });
+        d.show();
     },
     branch: function (frm) {
         refresh_field("table_60")
@@ -875,188 +931,3 @@ frappe.ui.form.on("Maintenance Order", "net_total", function (frm) {
         });
     }
 });
-
-// ===================================================================
-// CUSTODY MANAGEMENT: Issue and Track Materials/Tools
-// ===================================================================
-
-frappe.ui.form.on('Maintenance Order', {
-    refresh: function (frm) {
-        // Add custody management buttons
-        if (frm.doc.docstatus === 1) {
-            // Button 1: Issue Custody (when not issued yet)
-            if (!frm.doc.custody_issued) {
-                frm.add_custom_button(__('Issue Custody'), function () {
-                    show_issue_custody_dialog(frm);
-                }, __('Custody'));
-            }
-
-            // Button 2: View Custody Record (when custody exists)
-            if (frm.doc.linked_custody) {
-                frm.add_custom_button(__('View Custody'), function () {
-                    frappe.set_route('Form', 'Technician Custody', frm.doc.linked_custody);
-                }, __('Custody'));
-            }
-
-            // Show custody status indicator
-            if (frm.doc.custody_issued) {
-                let color = 'blue';
-                let message = frm.doc.custody_status;
-
-                if (frm.doc.custody_status === 'Overdue') {
-                    color = 'red';
-                } else if (frm.doc.custody_status === 'Fully Returned') {
-                    color = 'green';
-                } else if (frm.doc.custody_status === 'Issued') {
-                    color = 'orange';
-                }
-
-                frm.dashboard.add_indicator(
-                    __('Custody: {0}', [message]),
-                    color
-                );
-            }
-        }
-    }
-});
-
-function show_issue_custody_dialog(frm) {
-    // Get maintenance team from the order
-    let maintenance_team = frm.doc.maintenance_team;
-
-    if (!maintenance_team) {
-        frappe.msgprint(__('Please assign a Maintenance Team first'));
-        return;
-    }
-
-    let d = new frappe.ui.Dialog({
-        title: __('Issue Custody'),
-        fields: [
-            {
-                label: __('Maintenance Team'),
-                fieldname: 'maintenance_team',
-                fieldtype: 'Link',
-                options: 'Maintenance Team',
-                default: maintenance_team,
-                reqd: 1
-            },
-            {
-                fieldtype: 'Column Break'
-            },
-            {
-                label: __('Expected Return Date'),
-                fieldname: 'expected_return_date',
-                fieldtype: 'Date',
-                default: frm.doc.delivery_date || frappe.datetime.add_days(frappe.datetime.nowdate(), 7),
-                reqd: 1
-            },
-            {
-                fieldtype: 'Section Break',
-                label: __('Items to Issue')
-            },
-            {
-                label: __('Items'),
-                fieldname: 'items',
-                fieldtype: 'Table',
-                cannot_add_rows: false,
-                in_place_edit: true,
-                reqd: 1,
-                fields: [
-                    {
-                        label: __('Item Code'),
-                        fieldname: 'item_code',
-                        fieldtype: 'Link',
-                        options: 'Item',
-                        in_list_view: 1,
-                        reqd: 1
-                    },
-                    {
-                        label: __('Item Name'),
-                        fieldname: 'item_name',
-                        fieldtype: 'Read Only',
-                        in_list_view: 1,
-                        fetch_from: 'item_code.item_name'
-                    },
-                    {
-                        label: __('Type'),
-                        fieldname: 'item_type',
-                        fieldtype: 'Select',
-                        options: 'Tool\nMaterial\nSpare Part',
-                        in_list_view: 1,
-                        reqd: 1,
-                        default: 'Material'
-                    },
-                    {
-                        label: __('Qty'),
-                        fieldname: 'qty_issued',
-                        fieldtype: 'Float',
-                        in_list_view: 1,
-                        reqd: 1,
-                        default: 1
-                    },
-                    {
-                        label: __('Notes'),
-                        fieldname: 'notes',
-                        fieldtype: 'Small Text',
-                        in_list_view: 0
-                    }
-                ]
-            }
-        ],
-        primary_action_label: __('Issue Custody'),
-        primary_action(values) {
-            if (!values.items || values.items.length === 0) {
-                frappe.msgprint(__('Please add at least one item'));
-                return;
-            }
-
-            frappe.call({
-                method: 'frappe.client.insert',
-                args: {
-                    doc: {
-                        doctype: 'Technician Custody',
-                        maintenance_order: frm.doc.name,
-                        maintenance_team: values.maintenance_team,
-                        expected_return_date: values.expected_return_date,
-                        items: values.items
-                    }
-                },
-                callback: function (r) {
-                    if (!r.exc) {
-                        // Submit the custody record
-                        frappe.call({
-                            method: 'frappe.client.submit',
-                            args: {
-                                doc: r.message
-                            },
-                            callback: function (submit_r) {
-                                if (!submit_r.exc) {
-                                    // Update Maintenance Order
-                                    frappe.call({
-                                        method: 'frappe.client.set_value',
-                                        args: {
-                                            doctype: 'Maintenance Order',
-                                            name: frm.doc.name,
-                                            fieldname: {
-                                                custody_issued: 1,
-                                                custody_status: 'Issued',
-                                                linked_custody: submit_r.message.name
-                                            }
-                                        },
-                                        callback: function () {
-                                            frappe.msgprint(__('Custody {0} issued successfully!', [submit_r.message.name]));
-                                            frm.reload_doc();
-                                            d.hide();
-                                        }
-                                    });
-                                }
-                            }
-                        });
-                    }
-                }
-            });
-        }
-    });
-
-    d.show();
-}

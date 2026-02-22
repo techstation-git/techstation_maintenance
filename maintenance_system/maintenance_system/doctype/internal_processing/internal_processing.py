@@ -16,23 +16,6 @@ class InternalProcessing(Document):
             self.current_stage = 'Internal Processing'
         if not self.confirmed_by:
             self.confirmed_by = frappe.session.user
-        
-        # Phase 2: Custody Management - Check if custody is returned before completion
-        self.validate_custody_before_completion()
-    
-    def validate_custody_before_completion(self):
-        """Ensure custody is returned before completing processing"""
-        if self.maintenance_order and self.status == "Complete":
-            # Get the maintenance order
-            mo = frappe.get_doc("Maintenance Order", self.maintenance_order)
-            
-            if mo.custody_issued and mo.custody_status not in ["Fully Returned", "Not Issued"]:
-                frappe.throw(
-                    f"Cannot complete processing. Custody items are still <b>{mo.custody_status}</b>. "
-                    f"Please return all custody items first.<br><br>"
-                    f"Custody Record: {frappe.utils.get_link_to_form('Technician Custody', mo.linked_custody)}",
-                    title="Custody Not Returned"
-                )
     def on_submit(self):
         if self.maintenance_directing:
             mo = frappe.get_doc("Maintenance Directing",

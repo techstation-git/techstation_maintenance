@@ -1,0 +1,177 @@
+{
+    "actions": [],
+    "allow_import": 1,
+    "autoname": "MAT-REQ-.#####",
+    "creation": "2026-02-22 01:09:43.000000",
+    "doctype": "DocType",
+    "document_type": "Document",
+    "engine": "InnoDB",
+    "field_order": [
+        "details_section",
+        "maintenance_order",
+        "requested_by",
+        "request_date",
+        "column_break_1",
+        "status",
+        "workflow_state",
+        "items_section",
+        "items",
+        "notes_section",
+        "operations_notes",
+        "column_break_2",
+        "purchase_notes"
+    ],
+    "fields": [
+        {
+            "fieldname": "details_section",
+            "fieldtype": "Section Break",
+            "label": "Request Details"
+        },
+        {
+            "fieldname": "maintenance_order",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Maintenance Order",
+            "options": "Maintenance Order"
+        },
+        {
+            "default": "Today",
+            "fieldname": "request_date",
+            "fieldtype": "Date",
+            "in_list_view": 1,
+            "label": "Request Date",
+            "reqd": 1
+        },
+        {
+            "fetch_from": "frappe.session.user",
+            "fetch_if_empty": 1,
+            "fieldname": "requested_by",
+            "fieldtype": "Link",
+            "label": "Requested By",
+            "options": "User",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "Draft",
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Status",
+            "options": "\nDraft\nPending Operations Approval\nOperations Approved\nPending Purchase\nPurchased\nRejected",
+            "read_only": 1
+        },
+        {
+            "fieldname": "workflow_state",
+            "fieldtype": "Data",
+            "hidden": 1,
+            "label": "Workflow State",
+            "no_copy": 1,
+            "read_only": 1
+        },
+        {
+            "bold": 1,
+            "fieldname": "items_section",
+            "fieldtype": "Section Break",
+            "label": "Requested Items"
+        },
+        {
+            "fieldname": "items",
+            "fieldtype": "Table",
+            "label": "Items",
+            "options": "Maintenance Material Request Item"
+        },
+        {
+            "collapsible": 1,
+            "fieldname": "notes_section",
+            "fieldtype": "Section Break",
+            "label": "Notes"
+        },
+        {
+            "fieldname": "operations_notes",
+            "fieldtype": "Text",
+            "label": "Operations Manager Notes"
+        },
+        {
+            "fieldname": "column_break_2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "purchase_notes",
+            "fieldtype": "Text",
+            "label": "Purchasing Notes"
+        }
+    ],
+    "is_submittable": 0,
+    "links": [],
+    "modified": "2026-02-22 01:09:43.000000",
+    "modified_by": "Administrator",
+    "module": "Maintenance System",
+    "name": "Maintenance Material Request",
+    "naming_rule": "Expression (old style)",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Maintenance Order",
+            "select": 1,
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 0,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Maintenance Material",
+            "select": 1,
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 0,
+            "delete": 0,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Maintenance Manager",
+            "select": 1,
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 0,
+            "delete": 0,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Operations Officer",
+            "select": 1,
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "title_field": "maintenance_order",
+    "track_changes": 1
+}

@@ -19,6 +19,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -43,6 +44,7 @@
   "report": 1,
   "role": "Maintenance User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -67,6 +69,7 @@
   "report": 0,
   "role": "Maintenance User",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -91,6 +94,7 @@
   "report": 0,
   "role": "Maintenance Supervisor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 1
@@ -115,6 +119,7 @@
   "report": 0,
   "role": "Maintenance Invoice",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -139,6 +144,7 @@
   "report": 1,
   "role": "Maintenance Manager",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -163,6 +169,7 @@
   "report": 1,
   "role": "System Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -187,6 +194,7 @@
   "report": 1,
   "role": "HR Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 1
@@ -211,6 +219,7 @@
   "report": 0,
   "role": "Maintenance Item",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -235,6 +244,7 @@
   "report": 1,
   "role": "Maintenance Supervisor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 1
@@ -259,6 +269,7 @@
   "report": 0,
   "role": "Maintenance External",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -283,6 +294,7 @@
   "report": 0,
   "role": "Maintenance Directing",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -307,6 +319,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -331,6 +344,7 @@
   "report": 0,
   "role": "Maintenance Internal",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -355,6 +369,7 @@
   "report": 0,
   "role": "Maintenance Material",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -379,6 +394,7 @@
   "report": 0,
   "role": "Maintenance Invoice",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -403,6 +419,7 @@
   "report": 0,
   "role": "Maintenance Supervisor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -427,6 +444,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -451,6 +469,7 @@
   "report": 0,
   "role": "Maintenance Invoice",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -475,6 +494,7 @@
   "report": 0,
   "role": "Maintenance Directing",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -499,6 +519,7 @@
   "report": 0,
   "role": "Maintenance External",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -523,6 +544,7 @@
   "report": 0,
   "role": "Maintenance Internal",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -547,6 +569,7 @@
   "report": 0,
   "role": "Maintenance Invoice",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -571,6 +594,7 @@
   "report": 0,
   "role": "Maintenance Supervisor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -595,6 +619,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -619,6 +644,7 @@
   "report": 0,
   "role": "Maintenance External",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -643,6 +669,7 @@
   "report": 0,
   "role": "Maintenance Internal",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -667,6 +694,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -691,6 +719,7 @@
   "report": 0,
   "role": "Maintenance Material",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -715,6 +744,7 @@
   "report": 0,
   "role": "Maintenance Internal",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -739,6 +769,7 @@
   "report": 0,
   "role": "Maintenance External",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -763,6 +794,7 @@
   "report": 0,
   "role": "Maintenance Invoice",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -787,6 +819,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -811,6 +844,7 @@
   "report": 0,
   "role": "Maintenance Directing",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -835,6 +869,7 @@
   "report": 0,
   "role": "Maintenance Supervisor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -859,6 +894,7 @@
   "report": 0,
   "role": "Maintenance Commission",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -883,6 +919,7 @@
   "report": 0,
   "role": "Maintenance Directing",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -907,6 +944,7 @@
   "report": 0,
   "role": "Maintenance Internal",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -931,6 +969,7 @@
   "report": 0,
   "role": "Maintenance External",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -955,6 +994,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -979,6 +1019,7 @@
   "report": 0,
   "role": "Maintenance Invoice",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1003,6 +1044,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1027,6 +1069,7 @@
   "report": 1,
   "role": "Maintenance Manager",
   "select": 1,
+  "set_user_permissions": 1,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -1051,6 +1094,7 @@
   "report": 0,
   "role": "Maintenance Internal",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1075,6 +1119,7 @@
   "report": 0,
   "role": "Maintenance External",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1099,6 +1144,7 @@
   "report": 0,
   "role": "Maintenance Directing",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1123,6 +1169,7 @@
   "report": 0,
   "role": "Maintenance Invoice",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1147,6 +1194,7 @@
   "report": 0,
   "role": "Maintenance Supervisor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1171,6 +1219,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1195,6 +1244,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1219,6 +1269,7 @@
   "report": 0,
   "role": "Maintenance Supervisor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1243,6 +1294,7 @@
   "report": 0,
   "role": "Maintenance Item",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1267,6 +1319,7 @@
   "report": 0,
   "role": "Maintenance Material",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1291,6 +1344,7 @@
   "report": 0,
   "role": "Maintenance Material",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1315,6 +1369,7 @@
   "report": 0,
   "role": "Maintenance Internal",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1339,6 +1394,7 @@
   "report": 0,
   "role": "Maintenance External",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1363,6 +1419,7 @@
   "report": 0,
   "role": "Maintenance Supervisor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1387,6 +1444,7 @@
   "report": 0,
   "role": "Maintenance Invoice",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1411,6 +1469,7 @@
   "report": 0,
   "role": "Maintenance Item",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1435,6 +1494,7 @@
   "report": 0,
   "role": "Maintenance Material",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1459,6 +1519,7 @@
   "report": 0,
   "role": "Maintenance Supervisor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1483,6 +1544,7 @@
   "report": 0,
   "role": "Maintenance Directing",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1507,6 +1569,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1531,6 +1594,7 @@
   "report": 0,
   "role": "Maintenance Commission",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1555,6 +1619,7 @@
   "report": 0,
   "role": "Maintenance Internal",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1579,6 +1644,7 @@
   "report": 0,
   "role": "Maintenance External",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1603,6 +1669,7 @@
   "report": 0,
   "role": "Maintenance Supervisor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1627,6 +1694,7 @@
   "report": 0,
   "role": "Maintenance Directing",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1651,6 +1719,7 @@
   "report": 0,
   "role": "Maintenance Invoice",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1675,6 +1744,7 @@
   "report": 0,
   "role": "Maintenance Material",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1699,6 +1769,7 @@
   "report": 0,
   "role": "Maintenance Item",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1723,6 +1794,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1747,6 +1819,7 @@
   "report": 0,
   "role": "Maintenance Supervisor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1771,6 +1844,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1795,6 +1869,7 @@
   "report": 0,
   "role": "Maintenance Internal",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1819,6 +1894,7 @@
   "report": 0,
   "role": "Maintenance Supervisor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1843,6 +1919,7 @@
   "report": 0,
   "role": "Maintenance External",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1867,6 +1944,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1891,6 +1969,7 @@
   "report": 1,
   "role": "Maintenance Manager",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 0
@@ -1915,6 +1994,7 @@
   "report": 0,
   "role": "Maintenance Directing",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1939,6 +2019,7 @@
   "report": 0,
   "role": "Maintenance Item",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1963,6 +2044,7 @@
   "report": 0,
   "role": "Maintenance Directing",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -1987,6 +2069,7 @@
   "report": 1,
   "role": "Maintenance Invoice",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 1
@@ -2011,6 +2094,7 @@
   "report": 0,
   "role": "Maintenance External",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 1
@@ -2035,6 +2119,7 @@
   "report": 1,
   "role": "Maintenance Commission",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 1
@@ -2059,6 +2144,7 @@
   "report": 0,
   "role": "Maintenance Directing",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 1
@@ -2083,6 +2169,7 @@
   "report": 0,
   "role": "Maintenance User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2107,6 +2194,7 @@
   "report": 0,
   "role": "Maintenance Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2131,6 +2219,7 @@
   "report": 0,
   "role": "Maintenance Payment",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 1
@@ -2155,6 +2244,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 1
@@ -2179,6 +2269,7 @@
   "report": 0,
   "role": "Maintenance Material",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 1
@@ -2203,6 +2294,7 @@
   "report": 0,
   "role": "Maintenance Supervisor",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 1
@@ -2227,6 +2319,7 @@
   "report": 0,
   "role": "Maintenance Internal",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 1
@@ -2251,6 +2344,7 @@
   "report": 0,
   "role": "Maintenance Item",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2275,6 +2369,7 @@
   "report": 0,
   "role": "Maintenance Item",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2299,6 +2394,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2323,6 +2419,7 @@
   "report": 0,
   "role": "Maintenance Material",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2347,6 +2444,7 @@
   "report": 0,
   "role": "Maintenance External",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2371,6 +2469,7 @@
   "report": 0,
   "role": "Maintenance Payment",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2395,6 +2494,7 @@
   "report": 0,
   "role": "Maintenance Invoice",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2419,6 +2519,7 @@
   "report": 0,
   "role": "Maintenance Supervisor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2443,6 +2544,7 @@
   "report": 0,
   "role": "Maintenance External",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2467,6 +2569,7 @@
   "report": 0,
   "role": "Maintenance Material",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2491,6 +2594,7 @@
   "report": 0,
   "role": "Maintenance Directing",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2515,6 +2619,7 @@
   "report": 0,
   "role": "Maintenance Commission",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2539,6 +2644,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2563,6 +2669,7 @@
   "report": 0,
   "role": "Maintenance Internal",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -2587,6 +2694,7 @@
   "report": 1,
   "role": "System Manager",
   "select": 0,
+  "set_user_permissions": 1,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -2611,6 +2719,7 @@
   "report": 1,
   "role": "Accounts Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -2635,6 +2744,7 @@
   "report": 1,
   "role": "Administrator",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -2659,6 +2769,7 @@
   "report": 1,
   "role": "System Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -2683,6 +2794,7 @@
   "report": 1,
   "role": "Sales Master Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -2707,6 +2819,7 @@
   "report": 1,
   "role": "System Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -2731,6 +2844,7 @@
   "report": 1,
   "role": "System Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -2755,6 +2869,7 @@
   "report": 1,
   "role": "System Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -2779,6 +2894,7 @@
   "report": 1,
   "role": "Maintenance Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -2803,6 +2919,7 @@
   "report": 1,
   "role": "Maintenance Invoice",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -2827,6 +2944,7 @@
   "report": 1,
   "role": "Administrator",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -2851,6 +2969,7 @@
   "report": 1,
   "role": "Sales Master Manager",
   "select": 0,
+  "set_user_permissions": 1,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -2875,6 +2994,7 @@
   "report": 1,
   "role": "System Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -2899,6 +3019,7 @@
   "report": 1,
   "role": "Maintenance Manager",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -2923,6 +3044,7 @@
   "report": 1,
   "role": "Item Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -2947,6 +3069,7 @@
   "report": 1,
   "role": "Maintenance Internal",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -2971,6 +3094,7 @@
   "report": 1,
   "role": "Maintenance Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -2995,6 +3119,7 @@
   "report": 1,
   "role": "System Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3019,6 +3144,7 @@
   "report": 0,
   "role": "System Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3043,6 +3169,7 @@
   "report": 1,
   "role": "Maintenance External",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3067,6 +3194,7 @@
   "report": 1,
   "role": "Administrator",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3091,6 +3219,7 @@
   "report": 1,
   "role": "System Manager",
   "select": 0,
+  "set_user_permissions": 1,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3115,6 +3244,7 @@
   "report": 1,
   "role": "System Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3139,6 +3269,7 @@
   "report": 1,
   "role": "Sales User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -3163,6 +3294,7 @@
   "report": 1,
   "role": "HR User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3187,6 +3319,7 @@
   "report": 1,
   "role": "Stock Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3211,6 +3344,7 @@
   "report": 1,
   "role": "Administrator",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3235,6 +3369,7 @@
   "report": 1,
   "role": "Maintenance Order",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3259,6 +3394,7 @@
   "report": 1,
   "role": "System Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3283,6 +3419,7 @@
   "report": 1,
   "role": "Sales User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3307,6 +3444,7 @@
   "report": 1,
   "role": "System Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3331,6 +3469,7 @@
   "report": 1,
   "role": "Accounts Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3355,6 +3494,7 @@
   "report": 1,
   "role": "Sales User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -3379,6 +3519,7 @@
   "report": 0,
   "role": "System Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 1
@@ -3403,6 +3544,7 @@
   "report": 1,
   "role": "Accounts User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -3427,6 +3569,7 @@
   "report": 1,
   "role": "Maintenance Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3451,6 +3594,7 @@
   "report": 1,
   "role": "Maintenance Commission",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3475,6 +3619,7 @@
   "report": 1,
   "role": "Purchase Master Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3499,6 +3644,7 @@
   "report": 1,
   "role": "Maintenance Manager",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3523,6 +3669,7 @@
   "report": 1,
   "role": "Maintenance Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3547,6 +3694,7 @@
   "report": 1,
   "role": "Accounts Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3571,6 +3719,7 @@
   "report": 1,
   "role": "Maintenance Payment",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 0
@@ -3595,6 +3744,7 @@
   "report": 1,
   "role": "Maintenance Item",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3619,6 +3769,7 @@
   "report": 1,
   "role": "Sales Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -3643,6 +3794,7 @@
   "report": 1,
   "role": "Maintenance Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3667,6 +3819,7 @@
   "report": 1,
   "role": "Warranty Template",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3691,6 +3844,7 @@
   "report": 1,
   "role": "Stock User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -3715,6 +3869,7 @@
   "report": 0,
   "role": "Maintenance Supervisor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -3739,6 +3894,7 @@
   "report": 1,
   "role": "Maintenance Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3763,6 +3919,7 @@
   "report": 0,
   "role": "Maintenance Manager",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3787,6 +3944,7 @@
   "report": 1,
   "role": "Maintenance Supervisor",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 0
@@ -3811,6 +3969,7 @@
   "report": 1,
   "role": "Maintenance Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3835,6 +3994,7 @@
   "report": 1,
   "role": "Sales Master Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3859,6 +4019,7 @@
   "report": 1,
   "role": "Maintenance Material",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3883,6 +4044,7 @@
   "report": 1,
   "role": "Accounts Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3907,6 +4069,7 @@
   "report": 1,
   "role": "HR Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -3931,6 +4094,7 @@
   "report": 1,
   "role": "Stock User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3955,6 +4119,7 @@
   "report": 1,
   "role": "Maintenance Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -3979,6 +4144,7 @@
   "report": 0,
   "role": "Maintenance Payment",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4003,6 +4169,7 @@
   "report": 0,
   "role": "Sales User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4027,6 +4194,7 @@
   "report": 1,
   "role": "Auditor",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4051,6 +4219,7 @@
   "report": 1,
   "role": "Sales Master Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -4075,6 +4244,7 @@
   "report": 0,
   "role": "All",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4099,6 +4269,7 @@
   "report": 1,
   "role": "Accounts User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 0
@@ -4123,6 +4294,7 @@
   "report": 1,
   "role": "Maintenance Supervisor",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -4147,6 +4319,7 @@
   "report": 1,
   "role": "Maintenance Supervisor",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 0
@@ -4171,6 +4344,7 @@
   "report": 1,
   "role": "Sales User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4195,6 +4369,7 @@
   "report": 0,
   "role": "Maintenance Directing",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4219,6 +4394,7 @@
   "report": 1,
   "role": "Sales User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4243,6 +4419,7 @@
   "report": 0,
   "role": "Maintenance User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4267,6 +4444,7 @@
   "report": 0,
   "role": "Maintenance Order",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4291,6 +4469,7 @@
   "report": 1,
   "role": "Purchase Master Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -4315,6 +4494,7 @@
   "report": 1,
   "role": "Sales Master Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -4339,6 +4519,7 @@
   "report": 1,
   "role": "Manufacturing Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -4363,6 +4544,7 @@
   "report": 1,
   "role": "Maintenance Supervisor",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 0
@@ -4387,6 +4569,7 @@
   "report": 1,
   "role": "Sales Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4411,6 +4594,7 @@
   "report": 1,
   "role": "Accounts User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4435,6 +4619,7 @@
   "report": 1,
   "role": "Purchase User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4459,6 +4644,7 @@
   "report": 0,
   "role": "Stock User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4483,6 +4669,7 @@
   "report": 0,
   "role": "Maintenance External",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4507,6 +4694,7 @@
   "report": 1,
   "role": "Purchase User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4531,6 +4719,7 @@
   "report": 0,
   "role": "Maintenance Commission",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4555,6 +4744,7 @@
   "report": 1,
   "role": "Sales Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -4579,6 +4769,7 @@
   "report": 1,
   "role": "Manufacturing User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 1,
   "write": 1
@@ -4603,6 +4794,7 @@
   "report": 1,
   "role": "Sales Master Manager",
   "select": 0,
+  "set_user_permissions": 1,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -4627,6 +4819,7 @@
   "report": 0,
   "role": "Sales User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4651,6 +4844,7 @@
   "report": 1,
   "role": "Purchase Master Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -4675,6 +4869,7 @@
   "report": 0,
   "role": "Maintenance User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4699,6 +4894,7 @@
   "report": 0,
   "role": "Maintenance Internal",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4723,6 +4919,7 @@
   "report": 1,
   "role": "Accounts User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4747,6 +4944,7 @@
   "report": 1,
   "role": "Purchase Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -4771,6 +4969,7 @@
   "report": 0,
   "role": "Sales Master Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 1
@@ -4795,6 +4994,7 @@
   "report": 0,
   "role": "Purchase User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4819,6 +5019,7 @@
   "report": 0,
   "role": "Manufacturing User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4843,6 +5044,7 @@
   "report": 1,
   "role": "Customer",
   "select": 1,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 0
@@ -4867,6 +5069,7 @@
   "report": 0,
   "role": "Maintenance Payment",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4891,6 +5094,7 @@
   "report": 0,
   "role": "Manufacturing User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4915,6 +5119,7 @@
   "report": 1,
   "role": "Maintenance Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -4939,6 +5144,7 @@
   "report": 1,
   "role": "Stock User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -4963,6 +5169,7 @@
   "report": 1,
   "role": "Accounts User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 0
@@ -4987,6 +5194,7 @@
   "report": 0,
   "role": "Maintenance Invoice",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -5011,6 +5219,7 @@
   "report": 1,
   "role": "Accounts Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -5035,6 +5244,7 @@
   "report": 1,
   "role": "Stock Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -5059,6 +5269,7 @@
   "report": 1,
   "role": "Sales User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -5083,6 +5294,7 @@
   "report": 1,
   "role": "Accounts User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -5107,6 +5319,7 @@
   "report": 1,
   "role": "Purchase User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -5131,6 +5344,7 @@
   "report": 1,
   "role": "Accounts Manager",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
@@ -5155,6 +5369,7 @@
   "report": 1,
   "role": "Maintenance User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -5179,6 +5394,7 @@
   "report": 1,
   "role": "Accounts User",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 1,
   "submit": 0,
   "write": 1
@@ -5203,32 +5419,9 @@
   "report": 1,
   "role": "All",
   "select": 0,
+  "set_user_permissions": 0,
   "share": 0,
   "submit": 0,
   "write": 0
- },
- {
-  "amend": 0,
-  "cancel": 0,
-  "create": 1,
-  "delete": 0,
-  "docstatus": 0,
-  "doctype": "Custom DocPerm",
-  "email": 1,
-  "export": 1,
-  "if_owner": 0,
-  "import": 0,
-  "modified": "2026-02-01 13:28:39.086152",
-  "name": "b366610tpm",
-  "parent": "Maintenance Order",
-  "permlevel": 0,
-  "print": 1,
-  "read": 1,
-  "report": 1,
-  "role": "Operations Officer",
-  "select": 1,
-  "share": 0,
-  "submit": 0,
-  "write": 1
  }
 ]
