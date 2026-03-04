@@ -502,16 +502,18 @@ frappe.ui.form.on('Maintenance Invoice', {
                 frm.set_value("price_list", tabletransfer.default_price_list)
                 frm.set_value("company", tabletransfer.company)
 
-                frappe.call({
-                    method: "maintenance_system.maintenance_system.doctype.maintenance_order.maintenance_order.get_company_address",
-                    args: {
-                        company: tabletransfer.company
-                    },
-                    callback: function (r) {
-                        frm.set_value("company_address", r.message)
+                if (tabletransfer.company) {
+                    frappe.call({
+                        method: "maintenance_system.maintenance_system.doctype.maintenance_order.maintenance_order.get_company_address",
+                        args: {
+                            company: tabletransfer.company
+                        },
+                        callback: function (r) {
+                            frm.set_value("company_address", r.message)
 
-                    }
-                });
+                        }
+                    });
+                }
                 cur_frm.refresh_field("price_list");
             });
         }

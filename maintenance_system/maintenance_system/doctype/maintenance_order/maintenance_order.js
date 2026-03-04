@@ -618,16 +618,18 @@ frappe.ui.form.on('Maintenance Order', {
                 cur_frm.refresh_field("price_list");
                 frm.set_value("company", tabletransfer.company)
 
-                frappe.call({
-                    method: "maintenance_system.maintenance_system.doctype.maintenance_order.maintenance_order.get_company_address",
-                    args: {
-                        company: tabletransfer.company
-                    },
-                    callback: function (r) {
-                        frm.set_value("company_address", r.message)
+                if (tabletransfer.company) {
+                    frappe.call({
+                        method: "maintenance_system.maintenance_system.doctype.maintenance_order.maintenance_order.get_company_address",
+                        args: {
+                            company: tabletransfer.company
+                        },
+                        callback: function (r) {
+                            frm.set_value("company_address", r.message)
 
-                    }
-                });
+                        }
+                    });
+                }
                 if (!frm.doc.sales_taxes_and_charges_template && tabletransfer.tax_required && tabletransfer.sales_taxes_and_charges_template) {
                     frm.set_value("sales_taxes_and_charges_template", tabletransfer.sales_taxes_and_charges_template)
                     cur_frm.refresh_field("sales_taxes_and_charges_template");
