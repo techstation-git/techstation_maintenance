@@ -1,6 +1,7 @@
 {
     "custom_fields": [
         {
+            "dt": "Employee",
             "fieldname": "technician_type",
             "fieldtype": "Select",
             "label": "Technician Type",
