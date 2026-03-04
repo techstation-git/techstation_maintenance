@@ -1,8 +1,13 @@
 {
  "charts": [],
- "content": "[{\"id\":\"Rt_gbhu6wy\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Maintenance System</span>\",\"col\":12}},{\"id\":\"YiK_nDvnr0\",\"type\":\"card\",\"data\":{\"card_name\":\"Maintenance Masters\",\"col\":4}},{\"id\":\"Wfj7RQ93ez\",\"type\":\"card\",\"data\":{\"card_name\":\"Invoices\",\"col\":4}},{\"id\":\"9AEqNmnwRf\",\"type\":\"card\",\"data\":{\"card_name\":\"Follow Up\",\"col\":4}},{\"id\":\"nJgxcCQ28n\",\"type\":\"card\",\"data\":{\"card_name\":\"Warehouse\",\"col\":4}},{\"id\":\"EMe2ZdoJq0\",\"type\":\"card\",\"data\":{\"card_name\":\"Commissions\",\"col\":4}},{\"id\":\"MaO7V830Po\",\"type\":\"card\",\"data\":{\"card_name\":\"Module Setup\",\"col\":4}}]",
+ "content": "[{\"id\":\"Rt_gbhu6wy\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Maintenance System</span>\",\"col\":12}},{\"id\":\"YKEG3zF6Eo\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Maintenance Operation Dashboard\",\"col\":12}},{\"id\":\"YiK_nDvnr0\",\"type\":\"card\",\"data\":{\"card_name\":\"Maintenance Masters\",\"col\":4}},{\"id\":\"Wfj7RQ93ez\",\"type\":\"card\",\"data\":{\"card_name\":\"Invoices\",\"col\":4}},{\"id\":\"9AEqNmnwRf\",\"type\":\"card\",\"data\":{\"card_name\":\"Follow Up\",\"col\":4}},{\"id\":\"nJgxcCQ28n\",\"type\":\"card\",\"data\":{\"card_name\":\"Warehouse\",\"col\":4}},{\"id\":\"EMe2ZdoJq0\",\"type\":\"card\",\"data\":{\"card_name\":\"Commissions\",\"col\":4}},{\"id\":\"MaO7V830Po\",\"type\":\"card\",\"data\":{\"card_name\":\"Module Setup\",\"col\":4}}]",
  "creation": "2023-08-08 16:01:19.660925",
- "custom_blocks": [],
+ "custom_blocks": [
+  {
+   "custom_block_name": "Maintenance Operation Dashboard",
+   "label": "Maintenance Operation Dashboard"
+  }
+ ],
  "docstatus": 0,
  "doctype": "Workspace",
  "for_user": "",
@@ -280,7 +285,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-08-08 16:50:51.534705",
+ "modified": "2026-03-04 13:16:44.980903",
  "modified_by": "Administrator",
  "module": "Maintenance System",
  "name": "Maintenance System",
