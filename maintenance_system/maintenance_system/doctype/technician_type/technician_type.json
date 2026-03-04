@@ -1,0 +1,80 @@
+{
+    "actions": [],
+    "creation": "2026-03-04 09:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "type_name",
+        "bonus_method",
+        "column_break_1",
+        "fixed_amount",
+        "percentage",
+        "notes"
+    ],
+    "fields": [
+        {
+            "fieldname": "type_name",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Type Name",
+            "reqd": 1
+        },
+        {
+            "fieldname": "bonus_method",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Bonus Method",
+            "options": "\nFixed Amount per Operation\nPercentage of Net Value",
+            "reqd": 1
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "fixed_amount",
+            "fieldtype": "Currency",
+            "label": "Fixed Amount per Operation",
+            "depends_on": "eval:doc.bonus_method == 'Fixed Amount per Operation'"
+        },
+        {
+            "fieldname": "percentage",
+            "fieldtype": "Percent",
+            "label": "Percentage of Net Value",
+            "depends_on": "eval:doc.bonus_method == 'Percentage of Net Value'"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Small Text",
+            "label": "Notes"
+        }
+    ],
+    "index_web_pages_for_search": 1,
+    "links": [],
+    "modified": "2026-03-04 09:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Maintenance System",
+    "name": "Technician Type",
+    "naming_rule": "By fieldname",
+    "autoname": "field:type_name",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "role": "Maintenance Manager",
+            "write": 1
+        },
+        {
+            "read": 1,
+            "role": "Maintenance Supervisor"
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": []
+}

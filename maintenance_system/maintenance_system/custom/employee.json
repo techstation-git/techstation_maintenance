@@ -5,9 +5,25 @@
             "fieldname": "technician_type",
             "fieldtype": "Select",
             "label": "Technician Type",
-            "options": "\nTechnician\nAssistant",
+            "options": "\nSenior Technician\nJunior Technician\nAssistant Technician",
             "owner": "Administrator",
             "insert_after": "designation"
+        },
+        {
+            "dt": "Employee",
+            "fieldname": "specializations_section",
+            "fieldtype": "Section Break",
+            "label": "Specializations",
+            "collapsible": 1,
+            "insert_after": "technician_type"
+        },
+        {
+            "dt": "Employee",
+            "fieldname": "specializations",
+            "fieldtype": "Table",
+            "label": "Specializations",
+            "options": "Employee Specialization",
+            "insert_after": "specializations_section"
         }
     ],
     "custom_perms": [],
