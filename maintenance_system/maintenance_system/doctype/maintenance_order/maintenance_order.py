@@ -397,11 +397,12 @@ def order_default_branch(processing, doctype):
 
 
 @frappe.whitelist()
-def get_company_address(company):
+def get_company_address(company=None):
     if company:
         address = frappe.db.get_value(
             "Dynamic Link", {"link_doctype": "Company", "link_name": company}, "parent")
         return address
+    return None
         
         
 @frappe.whitelist()
