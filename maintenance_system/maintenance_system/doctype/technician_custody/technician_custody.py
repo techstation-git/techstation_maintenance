@@ -80,35 +80,39 @@ class TechnicianCustody(Document):
         self.db_set("status", "Issued")
 
     def ensure_custody_warehouse(self):
+        company = frappe.db.get_value("Maintenance Order", self.maintenance_order, "company") or frappe.defaults.get_global_default("company")
         warehouse_name = f"Custody - {self.employee}"
-        if not frappe.db.exists("Warehouse", warehouse_name):
-            # Create a technician-specific warehouse
-            parent_warehouse = frappe.db.get_value("Warehouse", {"is_group": 1}, "name") # Simplified: find any group
-            # Better: Look for or create "Technician Custodies" group
-            if not frappe.db.exists("Warehouse", "Technician Custodies"):
+        
+        existing_w = frappe.db.get_value("Warehouse", {"warehouse_name": warehouse_name, "company": company}, "name")
+        if not existing_w:
+            # Look for or create "Technician Custodies" group
+            group_name = frappe.db.get_value("Warehouse", {"warehouse_name": "Technician Custodies", "company": company, "is_group": 1}, "name")
+            
+            if not group_name:
+                # Find any fallback group if we can't create one easily, but let's just create it under the root company
                 group_doc = frappe.get_doc({
                     "doctype": "Warehouse",
                     "warehouse_name": "Technician Custodies",
                     "is_group": 1,
-                    "company": frappe.defaults.get_global_default("company")
+                    "company": company
                 })
                 group_doc.insert(ignore_permissions=True)
                 parent_warehouse = group_doc.name
             else:
-                parent_warehouse = "Technician Custodies"
+                parent_warehouse = group_name
 
             w_doc = frappe.get_doc({
                 "doctype": "Warehouse",
                 "warehouse_name": warehouse_name,
                 "parent_warehouse": parent_warehouse,
-                "company": frappe.defaults.get_global_default("company")
+                "company": company
             })
             w_doc.insert(ignore_permissions=True)
             self.custody_warehouse = w_doc.name
             self.db_set("custody_warehouse", w_doc.name)
         else:
-            self.custody_warehouse = warehouse_name
-            self.db_set("custody_warehouse", warehouse_name)
+            self.custody_warehouse = existing_w
+            self.db_set("custody_warehouse", existing_w)
 
     @frappe.whitelist()
     def create_return_stock_entry(self, return_items):
@@ -207,15 +211,18 @@ class TechnicianCustody(Document):
 
     def ensure_damaged_warehouse(self):
         damaged_name = "Damaged Goods - Technician Custody"
-        if not frappe.db.exists("Warehouse", damaged_name):
+        company = frappe.db.get_value("Maintenance Order", self.maintenance_order, "company") or frappe.defaults.get_global_default("company")
+        
+        existing_w = frappe.db.get_value("Warehouse", {"warehouse_name": damaged_name, "company": company}, "name")
+        if not existing_w:
             w_doc = frappe.get_doc({
                 "doctype": "Warehouse",
                 "warehouse_name": damaged_name,
-                "company": frappe.defaults.get_global_default("company")
+                "company": company
             })
             w_doc.insert(ignore_permissions=True)
             return w_doc.name
-        return damaged_name
+        return existing_w
 
     @frappe.whitelist()
     def return_items(self):
