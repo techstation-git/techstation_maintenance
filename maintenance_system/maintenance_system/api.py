@@ -22,12 +22,12 @@ def get_dashboard_data():
         SELECT
             tc.name,
             tc.maintenance_order,
-            tc.custody_status,
-            tc.expected_return_date
+            tc.status as custody_status,
+            tc.issue_date as expected_return_date
         FROM `tabTechnician Custody` tc
         WHERE tc.docstatus = 1
-          AND tc.custody_status IN ('Issued', 'Partially Returned', 'Overdue')
-        ORDER BY tc.expected_return_date ASC
+          AND tc.status IN ('Issued', 'Partially Returned', 'Overdue')
+        ORDER BY tc.issue_date ASC
         LIMIT 50
     """, as_dict=True)
 
