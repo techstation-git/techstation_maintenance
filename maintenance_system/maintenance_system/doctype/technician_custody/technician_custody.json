@@ -57,6 +57,7 @@
             "fieldtype": "Column Break"
         },
         {
+            "allow_on_submit": 1,
             "default": "Issued",
             "fieldname": "status",
             "fieldtype": "Select",
@@ -115,6 +116,7 @@
             "read_only": 1
         },
         {
+            "allow_on_submit": 1,
             "fieldname": "return_stock_entry",
             "fieldtype": "Link",
             "label": "Return Stock Entry",
