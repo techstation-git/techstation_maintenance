@@ -83,10 +83,11 @@ class TechnicianCustody(Document):
         company = frappe.db.get_value("Maintenance Order", self.maintenance_order, "company") or frappe.defaults.get_global_default("company")
         warehouse_name = f"Custody - {self.employee}"
         
-        existing_w = frappe.db.get_value("Warehouse", {"warehouse_name": warehouse_name, "company": company}, "name")
+        # Check if the specific technician warehouse exists (any company)
+        existing_w = frappe.db.get_value("Warehouse", {"warehouse_name": warehouse_name}, "name")
         if not existing_w:
             # Look for or create "Technician Custodies" group
-            group_name = frappe.db.get_value("Warehouse", {"warehouse_name": "Technician Custodies", "company": company, "is_group": 1}, "name")
+            group_name = frappe.db.get_value("Warehouse", {"warehouse_name": "Technician Custodies", "is_group": 1}, "name")
             
             if not group_name:
                 # Find any fallback group if we can't create one easily, but let's just create it under the root company
