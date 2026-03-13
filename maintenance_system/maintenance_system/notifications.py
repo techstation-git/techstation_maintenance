@@ -7,37 +7,41 @@ from frappe.utils import getdate, now_datetime, add_days
 
 def on_maintenance_order_submit(doc, method):
     """Send notification to Sales Person when Maintenance Order is submitted."""
-    _notify_sales_person(doc, "New Maintenance Order",
-        f"A new maintenance order {doc.name} has been created for customer {doc.customer_name}.\n\n"
+    _notify_sales_person(doc, f"🚨 New Maintenance Order: {doc.name}",
+        f"A new maintenance order {doc.name} has been created for customer {doc.customer}.\n\n"
         f"Item: {doc.maintenance_item}\nStatus: {doc.status}\nIssue Date: {doc.issue_date}"
     )
 
 
 def on_maintenance_order_update(doc, method):
-    """Send notification when Maintenance Order status changes to Complete."""
+    """Send notification when Maintenance Order status changes."""
+    # Only notify if status has changed
+    old_doc = doc.get_doc_before_save()
+    if not old_doc or old_doc.status == doc.status:
+        return
+
+    subject = f"🔄 Maintenance Order {doc.name} - Status Updated to {doc.status}"
     if doc.status == "Complete":
-        _notify_sales_person(doc, f"Maintenance Order Completed: {doc.name}",
-            f"Maintenance order {doc.name} for customer {doc.customer_name} has been completed.\n\n"
-            f"Item: {doc.maintenance_item}\nCompletion Date: {doc.maintenance_end_date}"
-        )
+        subject = f"✅ Maintenance Order Completed: {doc.name}"
+
+    _notify_sales_person(doc, subject,
+        f"Maintenance order {doc.name} for customer {doc.customer} status has been updated to <b>{doc.status}</b>.\n\n"
+        f"Item: {doc.maintenance_item}\nLast Updated: {frappe.utils.now_datetime()}"
+    )
 
 
 def _notify_sales_person(doc, subject, message):
-    """Helper to send email/system notification to the assigned sales person."""
-    sales_person = doc.get("sales_person")
-    if not sales_person:
+    """Helper to send email notification to the assigned sales person user."""
+    if not doc.sales_person_user:
         return
 
-    employee_email = frappe.db.get_value("Employee", sales_person, "prefered_email") or \
-                     frappe.db.get_value("Employee", sales_person, "company_email") or \
-                     frappe.db.get_value("Employee", sales_person, "personal_email")
-
-    if not employee_email:
+    sales_user_email = frappe.db.get_value("User", doc.sales_person_user, "email")
+    if not sales_user_email:
         return
 
     try:
         frappe.sendmail(
-            recipients=[employee_email],
+            recipients=[sales_user_email],
             subject=subject,
             message=message,
             reference_doctype=doc.doctype,

@@ -379,6 +379,7 @@
         {
             "fieldname": "maintenance_team",
             "fieldtype": "Link",
+            "allow_on_submit": 1,
             "label": "Maintenance Team",
             "options": "Maintenance Team"
         },
@@ -463,6 +464,7 @@
         {
             "fieldname": "table_60",
             "fieldtype": "Table",
+            "allow_on_submit": 1,
             "options": "Maintenance Order Items"
         },
         {
@@ -473,6 +475,7 @@
         {
             "fieldname": "table_66",
             "fieldtype": "Table",
+            "allow_on_submit": 1,
             "options": "Maintenance Order Spare Parts"
         },
         {
@@ -483,6 +486,7 @@
         {
             "fieldname": "total_amount",
             "fieldtype": "Currency",
+            "allow_on_submit": 1,
             "label": "Grand Total (EGP)",
             "options": "party_account_currency",
             "read_only": 1,
@@ -657,6 +661,7 @@
         {
             "fieldname": "total",
             "fieldtype": "Currency",
+            "allow_on_submit": 1,
             "label": "Spare Part Total",
             "options": "currency",
             "read_only": 1
@@ -664,6 +669,7 @@
         {
             "fieldname": "service_total",
             "fieldtype": "Currency",
+            "allow_on_submit": 1,
             "label": "Service Total",
             "options": "currency",
             "read_only": 1
@@ -671,6 +677,7 @@
         {
             "fieldname": "net_total",
             "fieldtype": "Currency",
+            "allow_on_submit": 1,
             "label": "Total",
             "options": "currency",
             "read_only": 1
@@ -728,6 +735,7 @@
         {
             "fieldname": "table_90",
             "fieldtype": "Table",
+            "allow_on_submit": 1,
             "options": "Maintenance Team Table",
             "read_only": 1
         },
@@ -827,6 +835,7 @@
         {
             "fieldname": "sales_person_user",
             "fieldtype": "Link",
+            "allow_on_submit": 1,
             "label": "Sales Person User",
             "options": "User",
             "description": "User to notify on ticket events"
@@ -847,6 +856,7 @@
         {
             "fieldname": "maintenance_assignments",
             "fieldtype": "Table",
+            "allow_on_submit": 1,
             "options": "Maintenance Assignment"
         },
         {
@@ -867,6 +877,7 @@
         {
             "fieldname": "additional_costs",
             "fieldtype": "Table",
+            "allow_on_submit": 1,
             "options": "Maintenance Cost"
         }
     ],

@@ -5,12 +5,11 @@ from __future__ import unicode_literals
 import frappe
 from frappe.utils import now_datetime, add_to_date
 
-
 def check_overdue_tickets():
     """
-    Daily task: Send alert to Operations Manager users when a Maintenance Order
-    has been in 'Waiting' or 'In Directing' status for more than 72 hours
-    without any action.
+    Hourly task: Send alert to Operations Officer users 
+    when a Maintenance Order has been in 'Waiting' or 'In Directing' 
+    status for more than 72 hours without being started.
     """
     cutoff = add_to_date(now_datetime(), hours=-72)
 
@@ -25,17 +24,17 @@ def check_overdue_tickets():
     if not overdue_orders:
         return
 
-    # Get all users with Operations Officer or Maintenance Manager roles
-    manager_users = frappe.db.sql("""
+    # Get all users with Operations Officer role
+    ops_officers = frappe.db.sql("""
         SELECT DISTINCT u.name, u.email
         FROM `tabUser` u
         JOIN `tabHas Role` hr ON hr.parent = u.name
-        WHERE hr.role IN ('Operations Officer', 'Maintenance Manager')
+        WHERE hr.role = 'Operations Officer'
           AND u.enabled = 1
-          AND u.email NOT LIKE '%@example.com'
     """, as_dict=True)
 
-    if not manager_users:
+    if not ops_officers:
+        frappe.logger().warning("[Maintenance System] No Operations Officers found to notify about overdue tickets.")
         return
 
     order_list_html = "".join([
@@ -43,21 +42,22 @@ def check_overdue_tickets():
         for o in overdue_orders
     ])
 
-    for user in manager_users:
+    for user in ops_officers:
         if not user.email:
             continue
         frappe.sendmail(
             recipients=[user.email],
-            subject=f"⚠️ {len(overdue_orders)} Overdue Maintenance Ticket(s) – Action Required",
+            subject=f"🚨 URGENT: {len(overdue_orders)} Unstarted Maintenance Orders (72h+ Overdue)",
             message=f"""
             <p>Dear {user.name},</p>
-            <p>The following maintenance orders have been open for more than <b>72 hours</b> without progress:</p>
+            <p>The following maintenance orders have remained <b>unstarted</b> for more than <b>72 hours</b>:</p>
             <ul>{order_list_html}</ul>
-            <p>Please review and assign technicians to these tickets immediately.</p>
-            <p>— Maintenance System Automated Alert</p>
+            <p>Please take immediate action to assign and start these orders.</p>
+            <hr>
+            <p><small>This is an automated priority alert from the Maintenance System.</small></p>
             """
         )
 
     frappe.logger().info(
-        f"[Maintenance System] Sent overdue ticket alert: {len(overdue_orders)} tickets to {len(manager_users)} managers"
+        f"[Maintenance System] Sent overdue ticket alert to Operations Officers: {len(overdue_orders)} tickets"
     )
