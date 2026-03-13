@@ -1,40 +1,41 @@
 {
-    "actions": [],
-    "creation": "2026-02-22 01:09:43.000000",
-    "doctype": "DocType",
-    "editable_grid": 1,
-    "engine": "InnoDB",
-    "field_order": [
-        "specialty",
-        "notes"
-    ],
-    "fields": [
-        {
-            "fieldname": "specialty",
-            "fieldtype": "Select",
-            "in_list_view": 1,
-            "label": "Specialty",
-            "options": "\nElectrical\nPlumbing\nHVAC\nCarpentry\nMechanical\nIT / Networking\nPainting\nCivil Works\nOther",
-            "reqd": 1
-        },
-        {
-            "fieldname": "notes",
-            "fieldtype": "Data",
-            "in_list_view": 1,
-            "label": "Notes"
-        }
-    ],
-    "index_web_pages_for_search": 1,
-    "istable": 1,
-    "links": [],
-    "modified": "2026-02-22 01:09:43.000000",
-    "modified_by": "Administrator",
-    "module": "Maintenance System",
-    "name": "Employee Specialization",
-    "naming_rule": "Random",
-    "owner": "Administrator",
-    "permissions": [],
-    "sort_field": "modified",
-    "sort_order": "DESC",
-    "states": []
+ "actions": [],
+ "creation": "2026-02-22 01:09:43",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "specialty",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "specialty",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Specialty",
+   "options": "Employee Skills",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-13 18:17:43.063733",
+ "modified_by": "Administrator",
+ "module": "Maintenance System",
+ "name": "Employee Specialization",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
 }

@@ -270,7 +270,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Follow Up",
-   "link_count": 1,
+   "link_count": 2,
    "onboard": 0,
    "type": "Card Break"
   },
@@ -281,6 +281,16 @@
    "link_count": 0,
    "link_to": "Maintenance Feedback",
    "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Labor Capacity View Report",
+   "link_count": 0,
+   "link_to": "Labor Capacity View Report",
+   "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   }

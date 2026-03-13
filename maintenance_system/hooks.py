@@ -19,9 +19,13 @@ doc_events = {
     }
 }
 
+permission_query_conditions = {
+    "Maintenance Order": "maintenance_system.maintenance_system.doctype.maintenance_order.maintenance_order.get_permission_query_conditions"
+}
+
 # Scheduled tasks
 scheduler_events = {
-    "daily": [
-        "maintenance_system.maintenance_system.notifications.send_72hr_overdue_alerts",
+    "hourly": [
+        "maintenance_system.tasks.check_overdue_tickets",
     ]
 }

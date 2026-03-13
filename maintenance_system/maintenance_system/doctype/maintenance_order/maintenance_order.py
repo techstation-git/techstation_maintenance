@@ -11,6 +11,34 @@ class MaintenanceOrder(Document):
         if not self.maintenance_order_added_by:
             self.maintenance_order_added_by = frappe.session.user
         self.validate_custody()
+        self.validate_attachments_on_complete()
+        self.sync_sales_person()
+
+    def sync_sales_person(self):
+        if self.sales_order:
+            # Check if Sales Order has a sales team
+            sales_team = frappe.get_all("Sales Team", 
+                filters={"parent": self.sales_order, "parenttype": "Sales Order"}, 
+                fields=["sales_person"], 
+                order_by="idx limit 1")
+                
+            if sales_team:
+                sales_person = sales_team[0].sales_person
+                # Sales Person -> Employee -> User
+                employee = frappe.db.get_value("Sales Person", sales_person, "employee")
+                if employee:
+                    user_id = frappe.db.get_value("Employee", employee, "user_id")
+                    if user_id:
+                        self.sales_person_user = user_id
+
+    def validate_attachments_on_complete(self):
+        if self.status == "Complete":
+            attachments = frappe.get_all("File", filters={
+                "attached_to_doctype": self.doctype,
+                "attached_to_name": self.name
+            })
+            if len(attachments) < 2:
+                frappe.throw(_("Please attach at least two files (e.g., a photo and a report) before completing the Maintenance Order."))
         self.validate_service_report()
         self.set_default_ticket_type()
         self.calculate_rewards()
@@ -415,66 +443,17 @@ def check_team(branch):
         return get_data
 
 
-def notify_sales_person_on_create(doc, method=None):
-    """Notify the assigned sales person when a new Maintenance Order is created."""
-    if not doc.sales_person_user:
-        return
-    try:
-        sales_user_email = frappe.db.get_value("User", doc.sales_person_user, "email")
-        if not sales_user_email:
-            return
-        frappe.sendmail(
-            recipients=[sales_user_email],
-            subject=f"New Maintenance Ticket Created: {doc.name}",
-            message=f"""
-            <p>Dear Sales Team,</p>
-            <p>A new maintenance ticket has been created and assigned to you:</p>
-            <ul>
-                <li><b>Ticket:</b> {doc.name}</li>
-                <li><b>Customer:</b> {doc.customer}</li>
-                <li><b>Type:</b> {doc.ticket_type or doc.order_type}</li>
-                <li><b>Status:</b> {doc.status}</li>
-                <li><b>Issue Date:</b> {doc.issue_date}</li>
-            </ul>
-            <p>Please follow up with the operations team to ensure timely resolution.</p>
-            """
-        )
-    except Exception:
-        frappe.log_error(frappe.get_traceback(), "Maintenance Order: notify_sales_person_on_create failed")
+def get_permission_query_conditions(user):
+    if not user:
+        user = frappe.session.user
 
+    # If user is a Manager or Administrator, don't restrict
+    if "Maintenance Manager" in frappe.get_roles(user) or "Administrator" in frappe.get_roles(user) or "System Manager" in frappe.get_roles(user):
+        return None
 
-def notify_sales_person_on_update(doc, method=None):
-    """Notify the assigned sales person when a Maintenance Order's status changes."""
-    if not doc.sales_person_user:
-        return
+    # Restrict Sales User and Sales Manager to their own assigned orders
+    roles = frappe.get_roles(user)
+    if "Sales User" in roles or "Sales Manager" in roles:
+        return f"`tabMaintenance Order`.sales_person_user = '{user}'"
 
-    # Only send notification if status has actually changed
-    prev_status = frappe.db.get_value("Maintenance Order", doc.name, "status")
-    if prev_status == doc.status:
-        return
-
-    try:
-        sales_user_email = frappe.db.get_value("User", doc.sales_person_user, "email")
-        if not sales_user_email:
-            return
-
-        subject = f"Maintenance Ticket {doc.name} – Status Updated"
-        if doc.status == "Complete":
-            subject = f"✅ Maintenance Ticket {doc.name} – Completed"
-
-        frappe.sendmail(
-            recipients=[sales_user_email],
-            subject=subject,
-            message=f"""
-            <p>Dear Sales Team,</p>
-            <p>Maintenance ticket <b>{doc.name}</b> has been updated:</p>
-            <ul>
-                <li><b>Customer:</b> {doc.customer}</li>
-                <li><b>Previous Status:</b> {prev_status}</li>
-                <li><b>New Status:</b> {doc.status}</li>
-            </ul>
-            <p>Please review the ticket for any required action on your end.</p>
-            """
-        )
-    except Exception:
-        frappe.log_error(frappe.get_traceback(), "Maintenance Order: notify_sales_person_on_update failed")
+    return None
