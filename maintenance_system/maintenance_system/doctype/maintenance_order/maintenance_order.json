@@ -935,7 +935,7 @@
             "role": "Operations Officer",
             "select": 1,
             "share": 1,
-            "submit": 0,
+            "submit": 1,
             "write": 1,
             "permlevel": 0
         },

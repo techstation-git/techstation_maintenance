@@ -582,6 +582,7 @@ frappe.ui.form.on("Maintenance Order Items", {
         refresh_field("total_amount");
         refresh_field("net_total");
         refresh_field("service_total");
+        frm.trigger('calculate_rewards');
 
     },
     table_60_remove: function (frm, cdt, cdn) {
@@ -933,3 +934,84 @@ frappe.ui.form.on("Maintenance Order", "net_total", function (frm) {
         });
     }
 });
+
+frappe.ui.form.on('Maintenance Order', {
+    refresh: function (frm) {
+        if (frm.doc.docstatus == 1 && frm.doc.status == "Complete") {
+            if (frappe.user_roles.includes("Operations Officer")) {
+                frm.toggle_enable("maintenance_assignments", true);
+                // Also need to set fields as editable in the grid
+                frm.fields_dict.maintenance_assignments.grid.editable_status = true;
+            } else {
+                frm.toggle_enable("maintenance_assignments", false);
+            }
+        }
+    },
+    calculate_rewards: function (frm) {
+        var total_amount = frm.doc.total_amount || 0;
+        var material_total = frm.doc.total || 0;
+        var commissionable_amount = total_amount - material_total;
+
+        $.each(frm.doc.maintenance_assignments || [], function (i, d) {
+            if (d.reward_mode === 'Labor Percentage') {
+                d.calculated_reward = (commissionable_amount * (d.reward_amount || 0) / 100);
+            } else if (d.reward_mode === 'Fixed') {
+                d.calculated_reward = (d.reward_amount || 0);
+            } else if (d.reward_mode === 'Material Consumption') {
+                if (d.target_item && d.unit_quantity) {
+                    var target_qty = 0;
+                    $.each(frm.doc.table_66 || [], function (j, p) {
+                        if (p.item_code === d.target_item) {
+                            target_qty += p.qty;
+                        }
+                    });
+                    d.calculated_reward = (target_qty / d.unit_quantity) * (d.reward_per_unit || 0);
+                } else {
+                    d.calculated_reward = 0;
+                }
+            }
+        });
+        frm.refresh_field('maintenance_assignments');
+    }
+});
+
+frappe.ui.form.on('Maintenance Assignment', {
+    reward_mode: function (frm, cdt, cdn) {
+        var d = locals[cdt][cdn];
+        toggle_assignment_fields(frm, d);
+        frm.trigger('calculate_rewards');
+    },
+    reward_amount: function (frm, cdt, cdn) {
+        frm.trigger('calculate_rewards');
+    },
+    reward_per_unit: function (frm, cdt, cdn) {
+        frm.trigger('calculate_rewards');
+    },
+    unit_quantity: function (frm, cdt, cdn) {
+        frm.trigger('calculate_rewards');
+    },
+    target_item: function (frm, cdt, cdn) {
+        frm.trigger('calculate_rewards');
+    },
+    maintenance_assignments_add: function (frm, cdt, cdn) {
+        var d = locals[cdt][cdn];
+        toggle_assignment_fields(frm, d);
+    }
+});
+
+function toggle_assignment_fields(frm, d) {
+    var grid_row = frm.fields_dict.maintenance_assignments.grid.get_row(d.name);
+    if (!grid_row) return;
+
+    if (d.reward_mode === 'Material Consumption') {
+        grid_row.toggle_display('reward_amount', false);
+        grid_row.toggle_display('target_item', true);
+        grid_row.toggle_display('unit_quantity', true);
+        grid_row.toggle_display('reward_per_unit', true);
+    } else {
+        grid_row.toggle_display('reward_amount', true);
+        grid_row.toggle_display('target_item', false);
+        grid_row.toggle_display('unit_quantity', false);
+        grid_row.toggle_display('reward_per_unit', false);
+    }
+}
