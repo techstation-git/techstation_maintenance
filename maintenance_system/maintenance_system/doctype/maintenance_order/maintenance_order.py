@@ -10,6 +10,12 @@ class MaintenanceOrder(Document):
     def validate(self):
         if not self.maintenance_order_added_by:
             self.maintenance_order_added_by = frappe.session.user
+        
+        # Only Operations Officer can edit after completion
+        if self.docstatus == 1 and self.status == "Complete":
+            if "Operations Officer" not in frappe.get_roles():
+                frappe.throw(_("Only Operations Officer can edit a completed Maintenance Order."))
+
         self.validate_custody()
         self.validate_attachments_on_complete()
         self.sync_sales_person()
@@ -67,19 +73,27 @@ class MaintenanceOrder(Document):
     def calculate_rewards(self):
         """
         Metrics:
-        1. by operation = fixed amount X count
-        2. by Percentage = (% of total ticket - material cost)
+        1. Fixed = Fixed amount
+        2. Labor Percentage = % of (Total - Material Cost)
+        3. Material Consumption = (Total Qty of target item / Unit Qty) * Reward per Unit
         """
         total_amount = self.total_amount or 0
-        material_cost = self.total or 0 # Sum of spare parts
+        material_cost = self.total or 0 # Sum of spare parts (table_66)
         
         commissionable_amount = total_amount - material_cost
         
         for d in self.get("maintenance_assignments"):
-            if d.reward_mode == "Percentage":
+            if d.reward_mode == "Labor Percentage":
                 d.calculated_reward = (commissionable_amount * (d.reward_amount or 0) / 100)
             elif d.reward_mode == "Fixed":
-                d.calculated_reward = (d.reward_amount or 0) * (d.count or 1)
+                d.calculated_reward = (d.reward_amount or 0)
+            elif d.reward_mode == "Material Consumption":
+                if d.target_item and d.unit_quantity:
+                    # Sum Qty of target_item from Spare Parts (table_66)
+                    target_qty = sum(p.qty for p in self.get("table_66") if p.item_code == d.target_item)
+                    d.calculated_reward = (target_qty / d.unit_quantity) * (d.reward_per_unit or 0)
+                else:
+                    d.calculated_reward = 0
 
     def log_status_change(self):
         """Automatically log status updates in progress_logs."""
