@@ -270,7 +270,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Follow Up",
-   "link_count": 2,
+   "link_count": 1,
    "onboard": 0,
    "type": "Card Break"
   },
@@ -283,19 +283,9 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Labor Capacity View Report",
-   "link_count": 0,
-   "link_to": "Labor Capacity View Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
   }
  ],
- "modified": "2026-03-04 13:16:44.980903",
+ "modified": "2026-04-04 20:02:52.008229",
  "modified_by": "Administrator",
  "module": "Maintenance System",
  "name": "Maintenance System",
