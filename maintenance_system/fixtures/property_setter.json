@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "doc_type": "Sales Order",
+        "doctype": "Property Setter",
+        "field_name": "order_type",
+        "property": "default",
+        "property_type": "Data",
+        "value": "Maintenance"
+    }
+]
