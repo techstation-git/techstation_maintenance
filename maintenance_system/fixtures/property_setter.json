@@ -3,6 +3,7 @@
         "doc_type": "Sales Order",
         "doctype": "Property Setter",
         "field_name": "order_type",
+        "name": "Sales Order-order_type-default",
         "property": "default",
         "property_type": "Data",
         "value": "Maintenance"
