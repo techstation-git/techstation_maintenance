@@ -7,7 +7,7 @@ app_version = '0.0.1'
 fixtures = [
     {
         "dt": "Custom HTML Block",
-        "filters": [["name", "=", "Maintenance Operations Dashboard"]]
+        "filters": [["name", "in", ["Maintenance Operation Dashboard", "Maintenance Operations Dashboard"]]]
     }
 ]
 
