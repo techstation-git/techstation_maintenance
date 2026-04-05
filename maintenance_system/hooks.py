@@ -8,6 +8,10 @@ fixtures = [
     {
         "dt": "Custom HTML Block",
         "filters": [["name", "in", ["Maintenance Operation Dashboard", "Maintenance Operations Dashboard"]]]
+    },
+    {
+        "dt": "Property Setter",
+        "filters": [["doc_type", "=", "Sales Order"], ["field_name", "=", "order_type"], ["property", "=", "default"]]
     }
 ]
 
