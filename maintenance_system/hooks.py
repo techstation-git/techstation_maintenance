@@ -11,7 +11,7 @@ fixtures = [
     },
     {
         "dt": "Property Setter",
-        "filters": [["doc_type", "=", "Sales Order"], ["field_name", "=", "order_type"], ["property", "=", "default"]]
+        "filters": [["doc_type", "=", "Sales Order"], ["field_name", "=", "order_type"], ["property", "in", ["default", "reqd", "hidden"]]]
     }
 ]
 
