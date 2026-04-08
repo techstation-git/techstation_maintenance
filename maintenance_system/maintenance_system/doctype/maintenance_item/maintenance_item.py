@@ -25,8 +25,8 @@ class MaintenanceItem(Document):
 		if check_already:
 			frappe.throw("Maintenance Item Already Created against Invoice No. <b>{0}</b> ".format(str(self.sales_invoice)))
 				
-	def autoname(self):
-		self.create_barcode()
+	# def autoname(self):
+	# 	self.create_barcode()
 	
 	def on_update(self):
 		on_update_data(self)
