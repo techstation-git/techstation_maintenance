@@ -31,8 +31,7 @@
    "fieldname": "warranty_period",
    "fieldtype": "Int",
    "in_list_view": 1,
-   "label": "Warranty Period",
-   "mandatory_depends_on": "eval: doc.warranty_period_type != \"\";"
+   "label": "Warranty Period"
   },
   {
    "fieldname": "customer_tolerance",
@@ -95,7 +94,7 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2023-09-17 00:07:00.689198",
+ "modified": "2026-04-09 11:52:04.176996",
  "modified_by": "Administrator",
  "module": "Maintenance System",
  "name": "Warranty Template",
@@ -176,6 +175,7 @@
    "share": 1
   }
  ],
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
