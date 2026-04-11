@@ -16,9 +16,16 @@ class MaintenanceOrder(Document):
             if "Operations Officer" not in frappe.get_roles():
                 frappe.throw(_("Only Operations Officer can edit a completed Maintenance Order."))
 
+        # Custom site validations (from Live)
         self.validate_custody()
         self.validate_attachments_on_complete()
+        
+        # Core feature logic (from Apps)
         self.sync_sales_person()
+        self.validate_service_report()
+        self.set_default_ticket_type()
+        self.calculate_rewards()
+        self.log_status_change()
 
     def sync_sales_person(self):
         if self.sales_order:
@@ -45,10 +52,6 @@ class MaintenanceOrder(Document):
             })
             if len(attachments) < 2:
                 frappe.throw(_("Please attach at least two files (e.g., a photo and a report) before completing the Maintenance Order."))
-        self.validate_service_report()
-        self.set_default_ticket_type()
-        self.calculate_rewards()
-        self.log_status_change()
 
     def validate_custody(self):
         if self.status == "Complete":
@@ -112,8 +115,6 @@ class MaintenanceOrder(Document):
         if self:
             get_company = frappe.get_doc("Maintenance System Settings")
             if get_company.company:
-                # company_address=frappe.db.get_value("Dynamic Link",{"link_name":get_company.company,"link_doctype":"Company"},"parent")
-                # self.company_address=company_address
                 self.terms_and_conditions = get_company.terms_of_service
                 if get_company.terms_of_service:
                     get_terms = frappe.get_doc(
@@ -149,7 +150,6 @@ class MaintenanceOrder(Document):
                 "phone": self.phone,
                 "mobile_no": self.mobile_no,
                 "branch": self.branch,
-                # "maintenance_team":self.maintenance_team,
                 "maintenance_department": self.maintenance_department,
                 "payment_method": self.payment_method,
                 "warranty_start_date": self.warranty_start_date,
@@ -174,7 +174,6 @@ class MaintenanceOrder(Document):
                 "service_net_total": self.advance_paid,
                 "outstanding_amount": self.outstanding_amount,
                 "payment_received": self.payment_received
-
             })
             so.insert(ignore_permissions=True, ignore_mandatory=True)
             if self.warranty_bearing_rate:
@@ -225,6 +224,8 @@ class MaintenanceOrder(Document):
             ct = sv.append("operations", {})
             ct.maintenance_order = self.name
             sv.save(ignore_permissions=True)
+        
+        # Commission Beneficiary Logic
         if self.commission_benificiary:
             data_doc = frappe.new_doc("Maintenance Team Table")
             data_doc.parent = self.name
@@ -235,7 +236,7 @@ class MaintenanceOrder(Document):
             data_doc.insert()
             frappe.clear_cache()
             self.reload()
-        else:
+        elif self.maintenance_team:
             data_doc = frappe.new_doc("Maintenance Team Table")
             data_doc.parent = self.name
             data_doc.parenttype = self.doctype
@@ -290,86 +291,7 @@ def getIntrnalDate(order_type):
 
 
 @frappe.whitelist()
-def make_maintenance_processing(doc):
-    m_order = frappe.get_doc('Maintenance Order', doc)
-    items = []
-    for d in m_order.maintenance_malfunctions:
-        item_li = {"malfunction": d.malfunction}
-        items.append(item_li)
-    if m_order.status == "Waiting":
-        so = frappe.get_doc({
-            "doctype": "Maintenance Directing",
-            "customer": m_order.customer,
-            "territory": m_order.territory,
-            "issue_date": m_order.issue_date,
-            "order_type": m_order.order_type,
-            "maintenance_schedule": m_order.maintenance_schedule,
-            "maintenance_end_date": m_order.maintenance_end_date,
-            "maintenance_item": m_order.maintenance_item,
-            "warranty_template": m_order.warranty_template,
-            "warranty_status": m_order.warranty_status,
-            "description": m_order.description,
-            "accessories": m_order.accessories,
-            "maintenance_malfunctions": items,
-            "maintenance_order": m_order.name,
-            "branch": m_order.branch,
-            # "maintenance_team":m_order.maintenance_team,
-            "maintenance_department": m_order.maintenance_department,
-            "payment_method": m_order.payment_method,
-            "approval_to_add_items": m_order.approval_to_add_items,
-            "contact": m_order.contact,
-            "customer_address": m_order.customer_address,
-            "address_display": m_order.address_display,
-            "contact_display": m_order.contact_display,
-            "phone": m_order.phone,
-            "mobile_no": m_order.mobile_no
-        })
-        so.insert(ignore_permissions=True, ignore_mandatory=True)
-        if m_order.warranty_bearing_rate:
-            for rate in m_order.warranty_bearing_rate:
-                rate_append = so.append("warranty_bearing_rate", {})
-                rate_append.repair_tolerence = rate.repair_tolerence
-                rate_append.full_warranty = rate.full_warranty
-                rate_append.warranty_start_date = rate.warranty_start_date
-                rate_append.warranty_end_date = rate.warranty_end_date
-
-        if m_order.table_60:
-            for service in m_order.table_60:
-                service_item = so.append("maintenance_order_items", {})
-                service_item.maintenance_service = service.maintenance_service
-                service_item.price = service.price
-
-        if m_order.table_66:
-            for part in m_order.table_66:
-                spare_part = so.append("table_70", {})
-                spare_part.item_code = part.item_code
-                spare_part.qty = part.qty
-                spare_part.rate = part.rate
-                spare_part.amount = part.amount
-                spare_part.uom = part.uom
-        so.save(ignore_permissions=True)
-        frappe.msgprint("Maintenance Directing Created")
-
-
-def maintenance_bearing(self):
-    if self.maintenance_item:
-        get_list = frappe.db.sql(f"""select name,full_warranty,repair_tolerence,warranty_start_date,warranty_end_date from `tabMaintenance Item Warranty Bearing` 
-							where warranty_start_date <= Date('{self.creation}') and 
-							warranty_end_date >= Date('{self.creation}') and parent = "{self.maintenance_item}";""", as_dict=1)
-
-        if get_list:
-            self.warranty_bearing_rate = []
-            for item in get_list:
-                data = self.append("warranty_bearing_rate", {})
-                data.repair_tolerence = item["repair_tolerence"]
-                data.warranty_start_date = item["warranty_start_date"]
-                data.warranty_end_date = item["warranty_end_date"]
-                data.full_warranty = item["full_warranty"]
-
-
-@frappe.whitelist()
 def get_address_name(ref_doctype, docname):
-    # Return address name
     return get_party_address(ref_doctype, docname)
 
 
@@ -387,13 +309,11 @@ def get_party_address(doctype, name):
     )
     if out:
         return out[0][0]
-    else:
-        return ""
+    return ""
 
 
 @frappe.whitelist()
 def get_contact_name(ref_doctype, docname):
-    # Return Contact name
     return get_default_contact(ref_doctype, docname)
 
 
@@ -415,8 +335,7 @@ def get_default_contact(doctype, name):
             return out[0][0]
         except Exception:
             return None
-    else:
-        return None
+    return None
 
 
 @frappe.whitelist()
@@ -424,18 +343,6 @@ def default_branch():
     branch = frappe.db.get_value(
         "Branch", {"default_branch": 1, "enable": 1}, "name")
     return branch
-
-
-@frappe.whitelist()
-def order_default_branch(processing, doctype):
-    if processing:
-        m_order = frappe.db.get_value(
-            doctype, {"name": processing}, "maintenance_order")
-        if m_order:
-            branch = frappe.db.get_value(
-                "Maintenance Order", {"name": m_order}, "branch")
-            if branch:
-                return branch
 
 
 @frappe.whitelist()
@@ -460,14 +367,69 @@ def check_team(branch):
 def get_permission_query_conditions(user):
     if not user:
         user = frappe.session.user
-
-    # If user is a Manager or Administrator, don't restrict
     if "Maintenance Manager" in frappe.get_roles(user) or "Administrator" in frappe.get_roles(user) or "System Manager" in frappe.get_roles(user):
         return None
-
-    # Restrict Sales User and Sales Manager to their own assigned orders
     roles = frappe.get_roles(user)
     if "Sales User" in roles or "Sales Manager" in roles:
         return f"`tabMaintenance Order`.sales_person_user = '{user}'"
-
     return None
+
+
+def notify_sales_person_on_create(doc, method=None):
+    """Notify the assigned sales person when a new Maintenance Order is created."""
+    if not doc.sales_person_user:
+        return
+    try:
+        sales_user_email = frappe.db.get_value("User", doc.sales_person_user, "email")
+        if not sales_user_email:
+            return
+        frappe.sendmail(
+            recipients=[sales_user_email],
+            subject=f"New Maintenance Ticket Created: {doc.name}",
+            message=f"""
+            <p>Dear Sales Team,</p>
+            <p>A new maintenance ticket has been created and assigned to you:</p>
+            <ul>
+                <li><b>Ticket:</b> {doc.name}</li>
+                <li><b>Customer:</b> {doc.customer}</li>
+                <li><b>Type:</b> {doc.ticket_type or doc.order_type}</li>
+                <li><b>Status:</b> {doc.status}</li>
+                <li><b>Issue Date:</b> {doc.issue_date}</li>
+            </ul>
+            <p>Please follow up with the operations team to ensure timely resolution.</p>
+            """
+        )
+    except Exception:
+        frappe.log_error(frappe.get_traceback(), "Maintenance Order: notify_sales_person_on_create failed")
+
+
+def notify_sales_person_on_update(doc, method=None):
+    """Notify the assigned sales person when a Maintenance Order's status changes."""
+    if not doc.sales_person_user:
+        return
+    prev_status = frappe.db.get_value("Maintenance Order", doc.name, "status")
+    if prev_status == doc.status:
+        return
+    try:
+        sales_user_email = frappe.db.get_value("User", doc.sales_person_user, "email")
+        if not sales_user_email:
+            return
+        subject = f"Maintenance Ticket {doc.name} \u2013 Status Updated"
+        if doc.status == "Complete":
+            subject = f"\u2705 Maintenance Ticket {doc.name} \u2013 Completed"
+        frappe.sendmail(
+            recipients=[sales_user_email],
+            subject=subject,
+            message=f"""
+            <p>Dear Sales Team,</p>
+            <p>Maintenance ticket <b>{doc.name}</b> has been updated:</p>
+            <ul>
+                <li><b>Customer:</b> {doc.customer}</li>
+                <li><b>Previous Status:</b> {prev_status}</li>
+                <li><b>New Status:</b> {doc.status}</li>
+            </ul>
+            <p>Please review the ticket for any required action on your end.</p>
+            """
+        )
+    except Exception:
+        frappe.log_error(frappe.get_traceback(), "Maintenance Order: notify_sales_person_on_update failed")
