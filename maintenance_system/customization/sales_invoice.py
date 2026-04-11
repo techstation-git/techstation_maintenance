@@ -85,5 +85,5 @@ def create_maintenance_item(invoice):
                 maintenance_item.save()
                 maintenance_item.submit()
                 frappe.db.set_value("Sales Invoice",get_invoice.get("name"),"warranty_created",1)
-                frappe.msgprint("Maintenance Item Created Successfully")
+                # frappe.msgprint("Maintenance Item Created Successfully")
         return "Maintenance Item Created Successfully"
