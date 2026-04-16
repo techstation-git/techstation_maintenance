@@ -1,54 +1,10 @@
 import frappe
-from erpnext.accounts.doctype.sales_invoice.sales_invoice import SalesInvoice, check_if_return_invoice_linked_with_payment_entry, unlink_inter_company_doc
-from erpnext.setup.doctype.company.company import update_company_current_month_sales
+from erpnext.accounts.doctype.sales_invoice.sales_invoice import SalesInvoice
+
 
 class SalesInvoice(SalesInvoice):
 	def on_cancel(self):
-		check_if_return_invoice_linked_with_payment_entry(self)
-		#super(SalesInvoice, self).on_cancel()
-		SalesInvoice.check_sales_order_on_hold_or_close(self, "sales_order")
-		if self.is_return and not self.update_billed_amount_in_sales_order:
-			SalesInvoice.status_updater = []
-
-		SalesInvoice.update_status_updater_args(self)
-		SalesInvoice.update_prevdoc_status(self)
-		SalesInvoice.update_billing_status_in_dn(self)
-
-		if not self.is_return:
-			SalesInvoice.update_billing_status_for_zero_amount_refdoc(self, "Delivery Note")
-			SalesInvoice.update_billing_status_for_zero_amount_refdoc(self, "Sales Order")
-			SalesInvoice.update_serial_no(self, in_cancel=True)
-
-		# Updating stock ledger should always be called after updating prevdoc status,
-		# because updating reserved qty in bin depends upon updated delivered qty in SO
-		if self.update_stock == 1:
-			SalesInvoice.update_stock_ledger(self)
-
-		SalesInvoice.make_gl_entries_on_cancel(self)
-
-		if self.update_stock == 1:
-			SalesInvoice.repost_future_sle_and_gle(self)
-
-		self.db_set("status", "Cancelled")
-		self.db_set("repost_required", 0)
-
-		if (
-			frappe.db.get_single_value("Selling Settings", "sales_update_frequency") == "Each Transaction"
-		):
-			update_company_current_month_sales(self.company)
-			SalesInvoice.update_project(self)
-		if not self.is_return and not self.is_consolidated and self.loyalty_program:
-			SalesInvoice.delete_loyalty_point_entry(self)
-		elif (
-			self.is_return and self.return_against and not self.is_consolidated and self.loyalty_program
-		):
-			against_si_doc = frappe.get_doc("Sales Invoice", self.return_against)
-			against_si_doc.delete_loyalty_point_entry()
-			against_si_doc.make_loyalty_point_entry()
-
-		unlink_inter_company_doc(self.doctype, self.name, self.inter_company_invoice_reference)
-
-		SalesInvoice.unlink_sales_invoice_from_timesheets(self)
+		super().on_cancel()
 		self.ignore_linked_doctypes = (
 			"GL Entry",
 			"Stock Ledger Entry",
@@ -57,10 +13,16 @@ class SalesInvoice(SalesInvoice):
 			"Repost Payment Ledger Items",
 			"Payment Ledger Entry",
 		)
-		get_items = frappe.db.sql(f""" select name from `tabMaintenance Item` WHERE sales_invoice = '{self.name}' and warranty_status='Enabled' """)
+		get_items = frappe.db.sql(
+			"""
+			select name from `tabMaintenance Item`
+			where sales_invoice = %s and warranty_status = 'Enabled'
+			""",
+			(self.name,),
+		)
 		if get_items:
-			for x in get_items:
-				frappe.db.set_value("Maintenance Item", x[0], "warranty_status", "")
+			for row in get_items:
+				frappe.db.set_value("Maintenance Item", row[0], "warranty_status", "")
         
 
 
